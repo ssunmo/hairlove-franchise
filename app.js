@@ -138,6 +138,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // 주인님, web3forms.com 에서 발급받으신 액세스 키를 아래에 입력해 주시면 실제 이메일 전송이 활성화됩니다.
     const WEB3FORMS_ACCESS_KEY = "5a2af75a-0b6e-4e3a-90bd-9f432acb9a44"; 
 
+    // Auto-format phone number input (010-XXXX-XXXX)
+    const phoneInput = document.getElementById('userphone');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', (e) => {
+            let val = e.target.value.replace(/[^0-9]/g, '');
+            if (val.length > 3 && val.length <= 7) {
+                val = val.substr(0, 3) + '-' + val.substr(3);
+            } else if (val.length > 7) {
+                val = val.substr(0, 3) + '-' + val.substr(3, 4) + '-' + val.substr(7, 4);
+            }
+            e.target.value = val;
+        });
+    }
+
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         
