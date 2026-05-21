@@ -1584,6 +1584,10 @@ footer {
         font-size: 15px;
     }
     
+    .container {
+        padding: 0 20px;
+    }
+    
     .section-padding {
         padding: 80px 0;
     }
@@ -1634,7 +1638,68 @@ footer {
     }
     
     .product-info-box {
-        padding: 30px;
+        padding: 24px 20px;
+    }
+    
+    /* Cost Table Card Style on Mobile */
+    .cost-main {
+        padding: 24px 16px;
+    }
+    
+    .cost-table, 
+    .cost-table thead, 
+    .cost-table tbody, 
+    .cost-table tr, 
+    .cost-table th, 
+    .cost-table td {
+        display: block;
+        width: 100%;
+    }
+    
+    .cost-table thead {
+        display: none;
+    }
+    
+    .cost-table tr {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .cost-table tr:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+    
+    .cost-table td {
+        padding: 6px 0;
+        border-bottom: none;
+        text-align: left;
+        font-size: 0.9rem;
+    }
+    
+    .cost-table .item-name {
+        font-size: 1.05rem;
+        color: var(--primary-color);
+        font-weight: 700;
+        padding-bottom: 2px;
+    }
+    
+    .cost-table .item-val {
+        text-align: left;
+        font-size: 1rem;
+        color: var(--accent-gold);
+        font-weight: 700;
+        margin-top: 4px;
+    }
+    
+    .cost-table .item-val::before {
+        content: "개설 비용: ";
+        font-weight: 500;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        margin-right: 4px;
     }
     
     .comparison-table-wrapper {
@@ -1655,7 +1720,7 @@ footer {
     }
     
     .inquiry-form-box {
-        padding: 30px;
+        padding: 24px 16px;
     }
     
     .form-group-2 {
