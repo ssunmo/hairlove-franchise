@@ -1,5 +1,73 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // One preference controls the hero, product images and reveal effects.
+    const root = document.documentElement;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const motionButtons = document.querySelectorAll('.motion-toggle');
+    const motionImages = document.querySelectorAll('[data-motion]');
+    const motionStorageKey = 'hairlove-motion-paused';
+    let userPaused = false;
+    try {
+        userPaused = localStorage.getItem(motionStorageKey) === 'true';
+    } catch { /* Motion controls also work when storage is unavailable. */ }
+
+    const motionIsPaused = () => userPaused || reducedMotion.matches;
+    const finishCounters = () => {
+        document.querySelectorAll('.stat-num').forEach(stat => {
+            stat.textContent = stat.dataset.target;
+        });
+    };
+
+    const syncMotion = () => {
+        const paused = motionIsPaused();
+        root.classList.toggle('motion-paused', paused);
+        motionButtons.forEach(button => {
+            button.hidden = false;
+            button.disabled = reducedMotion.matches;
+            button.setAttribute('aria-pressed', String(paused));
+            button.querySelector('.motion-label').textContent = reducedMotion.matches
+                ? '모션 감소 사용 중' : paused ? '움직임 재생' : '움직임 정지';
+            button.querySelector('.motion-icon').textContent = paused ? '▶' : 'Ⅱ';
+            button.title = reducedMotion.matches
+                ? '기기의 모션 감소 설정에 따라 움직임이 꺼져 있습니다.'
+                : '페이지 전체의 이미지와 움직임 효과를 제어합니다.';
+        });
+        if (paused) {
+            document.querySelectorAll('.scroll-reveal').forEach(el => el.classList.add('active'));
+            finishCounters();
+        }
+    };
+
+    motionButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            userPaused = !userPaused;
+            try {
+                localStorage.setItem(motionStorageKey, String(userPaused));
+            } catch { /* Keep the preference for this page even without storage. */ }
+            syncMotion();
+        });
+    });
+    reducedMotion.addEventListener('change', syncMotion);
+    syncMotion();
+
+    const syncPageVisibility = () => root.classList.toggle('page-hidden', document.hidden);
+    document.addEventListener('visibilitychange', syncPageVisibility);
+    syncPageVisibility();
+
+    if ('IntersectionObserver' in window) {
+        const motionObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => entry.target.classList.toggle('is-in-view', entry.isIntersecting));
+        }, { threshold: 0 });
+        motionImages.forEach(img => motionObserver.observe(img));
+        root.classList.add('motion-ready');
+    }
+
+    const syncOverlayState = () => {
+        const hasOverlay = !!document.querySelector('.mobile-drawer.open, .lightbox-modal.open, .modal-overlay.open');
+        document.body.classList.toggle('no-scroll', hasOverlay);
+        root.classList.toggle('overlay-open', hasOverlay);
+    };
+
     // 1. Sticky Header scroll styling
     const header = document.getElementById('main-header');
     
@@ -19,18 +87,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileDrawer = document.getElementById('mobile-drawer');
     const drawerLinks = document.querySelectorAll('.drawer-link');
 
-    const toggleDrawer = () => {
-        mobileToggle.classList.toggle('open');
-        mobileDrawer.classList.toggle('open');
-        document.body.classList.toggle('no-scroll');
+    const setDrawerOpen = (open) => {
+        mobileToggle.classList.toggle('open', open);
+        mobileDrawer.classList.toggle('open', open);
+        mobileDrawer.inert = !open;
+        mobileToggle.setAttribute('aria-expanded', String(open));
+        mobileToggle.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+        syncOverlayState();
     };
 
-    mobileToggle.addEventListener('click', toggleDrawer);
+    mobileToggle.addEventListener('click', () => setDrawerOpen(!mobileDrawer.classList.contains('open')));
+
+    window.matchMedia('(min-width: 769px)').addEventListener('change', event => {
+        if (event.matches) setDrawerOpen(false);
+    });
 
     drawerLinks.forEach(link => {
         link.addEventListener('click', () => {
             if (mobileDrawer.classList.contains('open')) {
-                toggleDrawer();
+                setDrawerOpen(false);
             }
         });
     });
@@ -64,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. Scroll Reveal Animations (Intersection Observer)
     const revealElements = document.querySelectorAll('.scroll-reveal');
     
-    const revealObserver = new IntersectionObserver((entries, observer) => {
+    const revealObserver = 'IntersectionObserver' in window ? new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
@@ -81,11 +156,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }, {
         threshold: 0.15,
         rootMargin: '0px 0px -50px 0px'
-    });
+    }) : null;
 
-    revealElements.forEach(el => {
-        revealObserver.observe(el);
-    });
+    if (revealObserver && !motionIsPaused()) {
+        root.classList.add('reveal-ready');
+        revealElements.forEach(el => revealObserver.observe(el));
+    } else {
+        revealElements.forEach(el => el.classList.add('active'));
+        finishCounters();
+    }
 
     // 5. Stat Counter Ticking Animation
     function animateValue(obj) {
@@ -95,6 +174,10 @@ document.addEventListener('DOMContentLoaded', () => {
         let startTimestamp = null;
         
         const step = (timestamp) => {
+            if (motionIsPaused() || document.hidden) {
+                obj.textContent = end;
+                return;
+            }
             if (!startTimestamp) startTimestamp = timestamp;
             const progress = Math.min((timestamp - startTimestamp) / duration, 1);
             obj.innerHTML = Math.floor(progress * (end - start) + start);
@@ -111,19 +194,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. FAQ Accordion toggle
     const faqItems = document.querySelectorAll('.faq-item');
 
-    faqItems.forEach(item => {
+    faqItems.forEach((item, index) => {
         const questionButton = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        answer.id = `faq-answer-${index + 1}`;
+        questionButton.setAttribute('aria-controls', answer.id);
+        questionButton.setAttribute('aria-expanded', 'false');
         questionButton.addEventListener('click', () => {
             const isActive = item.classList.contains('active');
             
             // Close all items
             faqItems.forEach(otherItem => {
                 otherItem.classList.remove('active');
+                otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
             });
             
             // Toggle clicked item
             if (!isActive) {
                 item.classList.add('active');
+                questionButton.setAttribute('aria-expanded', 'true');
             }
         });
     });
@@ -212,7 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Open Success Modal
             successModal.classList.add('open');
-            document.body.classList.add('no-scroll');
+            syncOverlayState();
 
             // Form reset
             form.reset();
@@ -257,39 +346,70 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modalCloseBtn.addEventListener('click', () => {
         successModal.classList.remove('open');
-        document.body.classList.remove('no-scroll');
+        syncOverlayState();
     });
 
     // Close modal on click outside
     successModal.addEventListener('click', (e) => {
         if (e.target === successModal) {
             successModal.classList.remove('open');
-            document.body.classList.remove('no-scroll');
+            syncOverlayState();
         }
     });
 
     // 8. Lightbox Modal functions
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = lightbox.querySelector('.lightbox-close');
+    let lightboxTrigger = null;
 
-    window.openLightbox = (imageSrc) => {
+    window.openLightbox = (imageSrc, trigger = document.activeElement) => {
         if (lightbox && lightboxImg) {
+            lightboxTrigger = trigger;
             lightboxImg.src = imageSrc;
+            lightboxImg.alt = trigger?.querySelector('img')?.alt || '확대 이미지';
             lightbox.classList.add('open');
-            document.body.classList.add('no-scroll');
+            syncOverlayState();
+            lightboxClose.focus();
         }
     };
 
     window.closeLightbox = () => {
         if (lightbox) {
             lightbox.classList.remove('open');
-            document.body.classList.remove('no-scroll');
-            // Reset image source after animation to prevent flickering next time
-            setTimeout(() => {
-                if (lightboxImg) lightboxImg.src = '';
-            }, 300);
+            syncOverlayState();
+            lightboxImg.removeAttribute('src');
+            lightboxTrigger?.focus({ preventScroll: true });
         }
     };
+
+    document.querySelectorAll('[data-lightbox]').forEach(button => {
+        button.addEventListener('click', () => window.openLightbox(button.dataset.lightbox, button));
+    });
+    lightboxClose.addEventListener('click', window.closeLightbox);
+
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+            if (lightbox.classList.contains('open')) window.closeLightbox();
+            if (mobileDrawer.classList.contains('open')) {
+                setDrawerOpen(false);
+                mobileToggle.focus();
+            }
+        }
+        if (event.key === 'Tab' && lightbox.classList.contains('open')) {
+            event.preventDefault();
+            lightboxClose.focus();
+        } else if (event.key === 'Tab' && mobileDrawer.classList.contains('open')) {
+            const lastLink = mobileDrawer.querySelector('.btn-drawer-cta');
+            if (event.shiftKey && document.activeElement === mobileToggle) {
+                event.preventDefault();
+                lastLink.focus();
+            } else if (!event.shiftKey && document.activeElement === lastLink) {
+                event.preventDefault();
+                mobileToggle.focus();
+            }
+        }
+    });
 
     // Close lightbox on overlay click
     if (lightbox) {

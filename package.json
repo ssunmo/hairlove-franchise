@@ -1,0 +1,10 @@
+{
+  "name": "hairlove-franchise",
+  "private": true,
+  "scripts": {
+    "test": "node tests/verify.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}
