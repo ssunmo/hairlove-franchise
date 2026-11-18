@@ -48,6 +48,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 100px;
     font-size: 16px;
 }
 
@@ -74,6 +75,19 @@ img {
     max-width: 100%;
     height: auto;
     display: block;
+}
+
+button {
+    font: inherit;
+}
+
+:focus-visible {
+    outline: 3px solid var(--accent-gold);
+    outline-offset: 5px;
+}
+
+.no-scroll {
+    overflow: hidden;
 }
 
 /* 2. Typography & Layout Utilities */
@@ -135,6 +149,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 24px;
     transition: var(--transition-smooth);
 }
 
@@ -160,7 +175,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-menu ul {
     display: flex;
-    gap: 40px;
+    gap: clamp(18px, 2.5vw, 40px);
+    white-space: nowrap;
 }
 
 .nav-menu a {
@@ -258,10 +274,12 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
     gap: 30px;
     transition: var(--transition-smooth);
+    visibility: hidden;
 }
 
 .mobile-drawer.open {
     right: 0;
+    visibility: visible;
 }
 
 .mobile-nav-links {
@@ -287,28 +305,55 @@ h1, h2, h3, h4, h5, h6 {
 
 /* 4. Hero Section */
 #hero {
-    height: 100vh;
-    min-height: 650px;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    min-height: 760px;
+    min-height: max(760px, 100svh);
+    padding: 160px 0 150px;
+    background-color: #eee5d5;
     display: flex;
     align-items: center;
     position: relative;
-    color: #ffffff;
+    isolation: isolate;
+    overflow: hidden;
+    color: var(--primary-dark);
+}
+
+.hero-media,
+.hero-media::after {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.hero-media {
+    z-index: -1;
+    overflow: hidden;
+}
+
+.hero-media::after {
+    content: '';
+    background: linear-gradient(90deg, rgba(253, 251, 247, 0.96) 0%, rgba(253, 251, 247, 0.85) 35%, rgba(253, 251, 247, 0.18) 68%, transparent 100%);
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.025);
+    animation: salon-drift 26s ease-in-out infinite;
+}
+
+@keyframes salon-drift {
+    0%, 100% { transform: scale(1.025) translate3d(0, 0, 0); }
+    50% { transform: scale(1.085) translate3d(-1%, -0.5%, 0); }
 }
 
 .hero-content {
-    max-width: 800px;
-    margin-left: calc((100vw - 1200px) / 2 + 24px);
-    padding-right: 24px;
-}
-
-/* Fallback for ultra large screens or when centered */
-@media (min-width: 1400px) {
-    .hero-content {
-        margin-left: calc((100vw - 1200px) / 2);
-    }
+    width: 100%;
+    max-width: 1200px;
+    min-width: 0;
+    margin-inline: auto;
+    padding-inline: 24px;
 }
 
 .hero-subtitle {
@@ -316,34 +361,45 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.875rem;
     font-weight: 700;
     letter-spacing: 4px;
-    color: var(--accent-gold);
+    color: #73603b;
     display: block;
     margin-bottom: 16px;
 }
 
 .hero-title {
-    font-size: 3.5rem;
+    max-width: 800px;
+    font-size: clamp(2rem, 3.8vw, 3.5rem);
     font-weight: 300;
+    line-height: 1.4;
     margin-bottom: 24px;
     letter-spacing: -1px;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
 }
 
 .hero-title strong {
     font-weight: 700;
-    color: var(--bg-cream);
+    color: var(--primary-color);
 }
 
 .hero-desc {
+    max-width: 660px;
     font-size: 1.15rem;
     font-weight: 300;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
+    color: #454f43;
     margin-bottom: 40px;
+    word-break: keep-all;
 }
 
 .hero-buttons {
     display: flex;
+    flex-wrap: wrap;
     gap: 16px;
+}
+
+.hero-buttons a {
+    text-align: center;
 }
 
 .btn-primary {
@@ -364,26 +420,33 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-secondary {
-    background-color: transparent;
-    color: #ffffff;
+    background-color: rgba(253, 251, 247, 0.7);
+    color: var(--primary-dark);
     font-weight: 500;
     padding: 16px 36px;
     border-radius: 4px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(45, 74, 54, 0.45);
     backdrop-filter: blur(5px);
 }
 
 .btn-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: #ffffff;
+    background-color: var(--bg-cream);
+    border-color: var(--primary-color);
     transform: translateY(-2px);
 }
 
-.scroll-down-indicator {
+.hero-footer {
     position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 36px;
+    left: max(24px, calc((100% - 1152px) / 2));
+    right: max(110px, calc((100% - 1152px) / 2));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.scroll-down-indicator {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -391,17 +454,41 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-eng);
     font-size: 0.75rem;
     letter-spacing: 2px;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--primary-dark);
 }
 
-.scroll-down-indicator i {
-    animation: bounce 2s infinite;
+.motion-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 44px;
+    padding: 10px 16px;
+    border: 1px solid rgba(45, 74, 54, 0.24);
+    border-radius: 24px;
+    background: rgba(253, 251, 247, 0.92);
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
 }
 
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-8px); }
-    60% { transform: translateY(-4px); }
+.motion-toggle[hidden] {
+    display: none;
+}
+
+.motion-toggle:hover {
+    background: var(--bg-cream-dark);
+}
+
+.motion-toggle:disabled {
+    cursor: default;
+}
+
+.motion-icon {
+    width: 14px;
+    font-size: 0.95rem;
+    line-height: 1;
 }
 
 /* 5. Sections (General Styling) */
@@ -607,6 +694,10 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     width: 100%;
     height: 100%;
+    display: block;
+    border: 0;
+    padding: 16px 16px 52px;
+    overflow: hidden;
     cursor: pointer;
     background-color: #ffffff;
     transition: var(--transition-smooth);
@@ -615,43 +706,45 @@ h1, h2, h3, h4, h5, h6 {
 .poster-preview img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: var(--transition-smooth);
+    object-fit: contain;
+    animation: poster-breathe 18s ease-in-out infinite;
+}
+
+@keyframes poster-breathe {
+    0%, 100% { transform: scale(0.985) translateY(0); }
+    50% { transform: scale(1) translateY(-3px); }
 }
 
 .zoom-overlay {
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background-color: rgba(45, 74, 54, 0.85);
+    min-height: 44px;
+    padding: 10px;
+    background-color: var(--primary-color);
     color: #ffffff;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    opacity: 0;
+    opacity: 1;
     font-size: 0.9rem;
     font-weight: 500;
     transition: var(--transition-fast);
 }
 
 .zoom-overlay i {
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
-.poster-preview:hover {
-    /* Full bleed hover handled by image scale and overlay fade-in */
+.poster-preview:focus-visible {
+    outline-offset: -5px;
 }
 
-.poster-preview:hover img {
-    transform: scale(1.05);
-}
-
-.poster-preview:hover .zoom-overlay {
-    opacity: 1;
+.poster-preview:hover .zoom-overlay,
+.poster-preview:focus-visible .zoom-overlay {
+    background-color: var(--primary-dark);
 }
 
 /* Product Info Box */
@@ -943,7 +1036,7 @@ h1, h2, h3, h4, h5, h6 {
 /* 9. Franchise Cost Section (Cost Table & Benefits Card) */
 .cost-table-grid {
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
     gap: 40px;
     align-items: start;
 }
@@ -1352,7 +1445,7 @@ footer {
 
 .footer-info-grid {
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
     gap: 40px;
 }
 
@@ -1487,6 +1580,10 @@ footer {
     transition: var(--transition-fast);
     line-height: 1;
     z-index: 3010;
+    width: 48px;
+    height: 48px;
+    background: transparent;
+    border: 0;
 }
 
 .lightbox-close:hover {
@@ -1513,25 +1610,55 @@ footer {
     justify-content: center;
     font-size: 1.5rem;
     box-shadow: 0 8px 25px rgba(197, 160, 89, 0.4);
-    animation: pulse-ring 2s infinite;
-}
-
-@keyframes pulse-ring {
-    0% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.5); }
-    70% { box-shadow: 0 0 0 15px rgba(197, 160, 89, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(197, 160, 89, 0); }
 }
 
 /* Scroll Animations */
 .scroll-reveal {
+    opacity: 1;
+}
+
+html.reveal-ready .scroll-reveal {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.scroll-reveal.active {
+html.reveal-ready .scroll-reveal.active {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Start still; JavaScript enables only images currently in view. */
+[data-motion] {
+    animation-play-state: paused;
+}
+
+html.motion-ready [data-motion].is-in-view {
+    animation-play-state: running;
+}
+
+html.motion-paused [data-motion],
+html.page-hidden [data-motion],
+html.overlay-open [data-motion],
+html.motion-ready .poster-preview:hover [data-motion],
+html.motion-ready .poster-preview:focus-within [data-motion] {
+    animation-play-state: paused !important;
+}
+
+html.motion-paused *,
+html.motion-paused *::before,
+html.motion-paused *::after {
+    transition-duration: 0s !important;
+}
+
+html.motion-paused,
+html.motion-paused * {
+    scroll-behavior: auto !important;
+}
+
+html.motion-paused .scroll-reveal {
+    opacity: 1;
+    transform: none;
 }
 
 /* 14. Responsive Queries */
@@ -1542,7 +1669,7 @@ footer {
     }
     
     .hero-content {
-        margin-left: 32px;
+        padding-inline: 32px;
     }
     
     .grid-4col {
@@ -1614,12 +1741,61 @@ footer {
     }
     
     .hero-content {
-        margin-left: 20px;
-        padding-right: 20px;
+        padding-inline: 24px;
     }
     
     .hero-title {
-        font-size: 2.5rem;
+        font-size: clamp(1.9rem, 5.5vw, 2.8rem);
+        letter-spacing: -0.8px;
+    }
+
+    #hero {
+        min-height: 840px;
+        min-height: max(840px, 100svh);
+        padding: 140px 0 200px;
+        align-items: flex-start;
+    }
+
+    .hero-image {
+        object-position: 70% center;
+    }
+
+    .hero-media::after {
+        background: linear-gradient(180deg, rgba(253, 251, 247, 0.98) 0%, rgba(253, 251, 247, 0.92) 43%, rgba(253, 251, 247, 0.3) 72%, rgba(253, 251, 247, 0.08) 100%);
+    }
+
+    .hero-subtitle {
+        font-size: 0.68rem;
+        letter-spacing: 2.5px;
+    }
+
+    .hero-desc {
+        font-size: 1rem;
+        line-height: 1.85;
+        max-width: 520px;
+        margin-bottom: 28px;
+    }
+
+    .hero-desc br {
+        display: none;
+    }
+
+    .hero-buttons {
+        max-width: 480px;
+        gap: 12px;
+    }
+
+    .hero-buttons a {
+        flex: 1 1 180px;
+        padding: 14px 18px;
+    }
+
+    .hero-footer {
+        bottom: 28px;
+    }
+
+    .scroll-down-indicator {
+        display: none;
     }
     
     .product-display-box {
@@ -1737,5 +1913,27 @@ footer {
     .footer-info-grid {
         grid-template-columns: 100%;
         gap: 20px;
+    }
+}
+
+@media (max-width: 374px) {
+    .hero-title {
+        font-size: 1.75rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html, html * {
+        scroll-behavior: auto !important;
+    }
+
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    html.reveal-ready .scroll-reveal {
+        opacity: 1;
+        transform: none;
     }
 }

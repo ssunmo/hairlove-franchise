@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css?v=1.1">
+    <link rel="stylesheet" href="styles.css?v=2.0">
 </head>
 <body>
 
@@ -54,7 +54,7 @@
 
             <div class="header-actions">
                 <a href="#inquiry" class="btn-header-cta">창업 상담 신청</a>
-                <button class="mobile-nav-toggle" id="mobile-toggle" aria-label="메뉴 열기">
+                <button class="mobile-nav-toggle" id="mobile-toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-drawer">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -64,7 +64,7 @@
     </header>
 
     <!-- Mobile Navigation Drawer -->
-    <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer" id="mobile-drawer" inert>
         <ul class="mobile-nav-links">
             <li><a href="#brand-story" class="drawer-link">브랜드 소개</a></li>
             <li><a href="#pb-products" class="drawer-link">프리미엄 제품</a></li>
@@ -79,25 +79,35 @@
     <main>
 
         <!-- Hero Section -->
-        <section id="hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.55)), url('assets/hero_bg.png');">
+        <section id="hero" aria-labelledby="hero-title">
+            <div class="hero-media" aria-hidden="true">
+                <img class="hero-image" data-motion src="assets/salon-hero-1672.webp"
+                     width="1672" height="941" alt="" fetchpriority="high">
+            </div>
             <div class="hero-content">
-                <span class="hero-subtitle scroll-reveal">PREMIUM HAIR COLOR SALON</span>
-                <h1 class="hero-title scroll-reveal">
+                <span class="hero-subtitle">PREMIUM HAIR COLOR SALON</span>
+                <h1 class="hero-title" id="hero-title">
                     잦은 새치 염색에도 걱정 없는<br>
                     <strong>저자극 건강 염색</strong>의 시작
                 </h1>
-                <p class="hero-desc scroll-reveal">
+                <p class="hero-desc">
                     3060 세대의 헤어 고민을 해결하는 전문적인 모발 케어 시스템.<br>
                     머릿결사랑만의 염색약으로 고객의 마음과 점주님의 성공을 채웁니다.
                 </p>
-                <div class="hero-buttons scroll-reveal">
+                <div class="hero-buttons">
                     <a href="#inquiry" class="btn-primary">가맹 상담 신청하기</a>
                     <a href="#brand-story" class="btn-secondary">브랜드 스토리 보기</a>
                 </div>
             </div>
-            <div class="scroll-down-indicator">
-                <span>SCROLL DOWN</span>
-                <i class="fa-solid fa-chevron-down"></i>
+            <div class="hero-footer">
+                <button class="motion-toggle" type="button" aria-pressed="false" hidden>
+                    <span class="motion-icon" aria-hidden="true">Ⅱ</span>
+                    <span class="motion-label">움직임 정지</span>
+                </button>
+                <a class="scroll-down-indicator" href="#brand-story" aria-label="브랜드 소개로 이동">
+                    <span>SCROLL DOWN</span>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </a>
             </div>
         </section>
 
@@ -169,16 +179,20 @@
                     <h2 class="section-title">자체 브랜드 제품군</h2>
                     <p class="section-subtitle">머릿결사랑 매장에서만 만나볼 수 있는 고기능성 염색약과 케어 솔루션</p>
                     <div class="title-divider"></div>
+                    <button class="motion-toggle" type="button" aria-pressed="false" hidden>
+                        <span class="motion-icon" aria-hidden="true">Ⅱ</span>
+                        <span class="motion-label">움직임 정지</span>
+                    </button>
                 </div>
 
                 <div class="products-container">
                     <!-- Product 1: PalSaekMiGa -->
                     <div class="product-item scroll-reveal">
                         <div class="product-display-box">
-                            <div class="poster-preview" onclick="openLightbox('assets/dye_poster.jpg')">
-                                <img src="assets/dye_poster.jpg" alt="팔색미가 머릿결사랑 헤어칼라크림 포스터">
-                                <div class="zoom-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> 포스터 크게 보기</div>
-                            </div>
+                            <button class="poster-preview" type="button" data-lightbox="assets/dye_poster.jpg" aria-label="팔색미가 헤어칼라크림 포스터 크게 보기" aria-haspopup="dialog">
+                                <img data-motion src="assets/dye_poster.jpg" alt="팔색미가 머릿결사랑 헤어칼라크림 포스터" width="724" height="1024" loading="lazy" decoding="async">
+                                <span class="zoom-overlay"><i class="fa-solid fa-magnifying-glass-plus" aria-hidden="true"></i> 포스터 크게 보기</span>
+                            </button>
                         </div>
                         
                         <div class="product-info-box">
@@ -240,10 +254,10 @@
                     <!-- Product 2: Care Products -->
                     <div class="product-item reverse scroll-reveal">
                         <div class="product-display-box">
-                            <div class="poster-preview" onclick="openLightbox('assets/essence_poster.jpg')">
-                                <img src="assets/essence_poster.jpg" alt="프로페셔널 에센스 설명 포스터">
-                                <div class="zoom-overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> 포스터 크게 보기</div>
-                            </div>
+                            <button class="poster-preview" type="button" data-lightbox="assets/essence_poster.jpg" aria-label="프로페셔널 에센스 포스터 크게 보기" aria-haspopup="dialog">
+                                <img data-motion src="assets/essence_poster.jpg" alt="프로페셔널 에센스 설명 포스터" width="723" height="1024" loading="lazy" decoding="async">
+                                <span class="zoom-overlay"><i class="fa-solid fa-magnifying-glass-plus" aria-hidden="true"></i> 포스터 크게 보기</span>
+                            </button>
                         </div>
                         
                         <div class="product-info-box">
@@ -613,9 +627,9 @@
     </footer>
 
     <!-- Lightbox Modal -->
-    <div class="lightbox-modal" id="lightbox">
-        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <img class="lightbox-content" id="lightbox-img" src="" alt="확대 이미지">
+    <div class="lightbox-modal" id="lightbox" role="dialog" aria-modal="true" aria-label="제품 포스터 확대 보기">
+        <button class="lightbox-close" type="button" aria-label="확대 이미지 닫기">&times;</button>
+        <img class="lightbox-content" id="lightbox-img" alt="확대 이미지">
     </div>
 
     <!-- Success Modal -->
@@ -633,6 +647,6 @@
         <a href="tel:0323276788" aria-label="대표 번호로 전화 걸기"><i class="fa-solid fa-phone"></i></a>
     </div>
 
-    <script src="app.js"></script>
+    <script src="app.js?v=2.0"></script>
 </body>
 </html>

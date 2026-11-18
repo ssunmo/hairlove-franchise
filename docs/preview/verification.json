@@ -1,0 +1,833 @@
+{
+  "source": "ssunmo/hairlove-franchise (checked-out source; see Git commit containing this report)",
+  "browser": "156.0.8078.79",
+  "staticResponses": "intercepted from checkout",
+  "realFormRequests": 0,
+  "results": [
+    {
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "geometry": {
+        "viewport": 360,
+        "bodyWidth": 360,
+        "title": {
+          "x": 24,
+          "y": 173.34375,
+          "width": 312,
+          "height": 73.5,
+          "top": 173.34375,
+          "right": 336,
+          "bottom": 246.84375,
+          "left": 24
+        },
+        "titleRuns": [
+          {
+            "x": 24,
+            "y": 172.34375,
+            "width": 306.40625,
+            "height": 38,
+            "top": 172.34375,
+            "right": 330.40625,
+            "bottom": 210.34375,
+            "left": 24
+          },
+          {
+            "x": 330.40625,
+            "y": 172.34375,
+            "width": 0,
+            "height": 38,
+            "top": 172.34375,
+            "right": 330.40625,
+            "bottom": 210.34375,
+            "left": 330.40625
+          },
+          {
+            "x": 24,
+            "y": 209.09375,
+            "width": 176.5625,
+            "height": 38,
+            "top": 209.09375,
+            "right": 200.5625,
+            "bottom": 247.09375,
+            "left": 24
+          },
+          {
+            "x": 24,
+            "y": 209.09375,
+            "width": 176.5625,
+            "height": 38,
+            "top": 209.09375,
+            "right": 200.5625,
+            "bottom": 247.09375,
+            "left": 24
+          },
+          {
+            "x": 200.5625,
+            "y": 209.09375,
+            "width": 76.609375,
+            "height": 38,
+            "top": 209.09375,
+            "right": 277.171875,
+            "bottom": 247.09375,
+            "left": 200.5625
+          }
+        ],
+        "ctas": [
+          {
+            "x": 24,
+            "y": 382.09375,
+            "width": 312,
+            "height": 55.5,
+            "top": 382.09375,
+            "right": 336,
+            "bottom": 437.59375,
+            "left": 24
+          },
+          {
+            "x": 24,
+            "y": 449.59375,
+            "width": 312,
+            "height": 55.5,
+            "top": 449.59375,
+            "right": 336,
+            "bottom": 505.09375,
+            "left": 24
+          }
+        ],
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 79,
+          "top": 0,
+          "right": 360,
+          "bottom": 79,
+          "left": 0
+        },
+        "motion": {
+          "x": 24,
+          "y": 772,
+          "width": 115.5625,
+          "height": 44,
+          "top": 772,
+          "right": 139.5625,
+          "bottom": 816,
+          "left": 24
+        },
+        "phone": {
+          "x": 270,
+          "y": 754,
+          "width": 60,
+          "height": 60,
+          "top": 754,
+          "right": 330,
+          "bottom": 814,
+          "left": 270
+        },
+        "image": "https://franchise.hairlove.kr/assets/salon-hero-1672.webp",
+        "animationDuration": "26s"
+      },
+      "images": [
+        {
+          "src": "assets/logo_green.png",
+          "loaded": true
+        },
+        {
+          "src": "assets/salon-hero-1672.webp",
+          "loaded": true
+        },
+        {
+          "src": "assets/dye_poster.jpg",
+          "loaded": true
+        },
+        {
+          "src": "assets/essence_poster.jpg",
+          "loaded": true
+        },
+        {
+          "src": "assets/logo_white.png",
+          "loaded": true
+        }
+      ],
+      "checks": [
+        "layout",
+        "loading",
+        "pause/resume",
+        "persisted preference",
+        "offscreen pause/resume",
+        "hover/focus pause",
+        "simulated hidden tab",
+        "dynamic reduced motion",
+        "navigation",
+        "FAQ",
+        "keyboard lightbox",
+        "required/consent validation",
+        "mocked form success/error/offline"
+      ],
+      "mockedFormRequests": 3
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "geometry": {
+        "viewport": 390,
+        "bodyWidth": 390,
+        "title": {
+          "x": 24,
+          "y": 173.34375,
+          "width": 342,
+          "height": 79.78125,
+          "top": 173.34375,
+          "right": 366,
+          "bottom": 253.125,
+          "left": 24
+        },
+        "titleRuns": [
+          {
+            "x": 24,
+            "y": 172.34375,
+            "width": 333.765625,
+            "height": 41,
+            "top": 172.34375,
+            "right": 357.765625,
+            "bottom": 213.34375,
+            "left": 24
+          },
+          {
+            "x": 357.765625,
+            "y": 172.34375,
+            "width": 0,
+            "height": 41,
+            "top": 172.34375,
+            "right": 357.765625,
+            "bottom": 213.34375,
+            "left": 357.765625
+          },
+          {
+            "x": 24,
+            "y": 212.234375,
+            "width": 192.3125,
+            "height": 41,
+            "top": 212.234375,
+            "right": 216.3125,
+            "bottom": 253.234375,
+            "left": 24
+          },
+          {
+            "x": 24,
+            "y": 212.234375,
+            "width": 192.3125,
+            "height": 41,
+            "top": 212.234375,
+            "right": 216.3125,
+            "bottom": 253.234375,
+            "left": 24
+          },
+          {
+            "x": 216.3125,
+            "y": 212.234375,
+            "width": 83.453125,
+            "height": 41,
+            "top": 212.234375,
+            "right": 299.765625,
+            "bottom": 253.234375,
+            "left": 216.3125
+          }
+        ],
+        "ctas": [
+          {
+            "x": 24,
+            "y": 388.375,
+            "width": 342,
+            "height": 55.5,
+            "top": 388.375,
+            "right": 366,
+            "bottom": 443.875,
+            "left": 24
+          },
+          {
+            "x": 24,
+            "y": 455.875,
+            "width": 342,
+            "height": 55.5,
+            "top": 455.875,
+            "right": 366,
+            "bottom": 511.375,
+            "left": 24
+          }
+        ],
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 79,
+          "top": 0,
+          "right": 390,
+          "bottom": 79,
+          "left": 0
+        },
+        "motion": {
+          "x": 24,
+          "y": 772,
+          "width": 115.5625,
+          "height": 44,
+          "top": 772,
+          "right": 139.5625,
+          "bottom": 816,
+          "left": 24
+        },
+        "phone": {
+          "x": 300,
+          "y": 754,
+          "width": 60,
+          "height": 60,
+          "top": 754,
+          "right": 360,
+          "bottom": 814,
+          "left": 300
+        },
+        "image": "https://franchise.hairlove.kr/assets/salon-hero-1672.webp",
+        "animationDuration": "26s"
+      },
+      "images": [
+        {
+          "src": "assets/logo_green.png",
+          "loaded": true
+        },
+        {
+          "src": "assets/salon-hero-1672.webp",
+          "loaded": true
+        },
+        {
+          "src": "assets/dye_poster.jpg",
+          "loaded": true
+        },
+        {
+          "src": "assets/essence_poster.jpg",
+          "loaded": true
+        },
+        {
+          "src": "assets/logo_white.png",
+          "loaded": true
+        }
+      ],
+      "checks": [
+        "layout",
+        "loading",
+        "pause/resume",
+        "persisted preference",
+        "offscreen pause/resume",
+        "hover/focus pause",
+        "simulated hidden tab",
+        "dynamic reduced motion",
+        "navigation",
+        "FAQ",
+        "keyboard lightbox",
+        "required/consent validation",
+        "mocked form success/error/offline"
+      ],
+      "mockedFormRequests": 3
+    },
+    {
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "geometry": {
+        "viewport": 768,
+        "bodyWidth": 768,
+        "title": {
+          "x": 24,
+          "y": 173.34375,
+          "width": 720,
+          "height": 117.59375,
+          "top": 173.34375,
+          "right": 744,
+          "bottom": 290.9375,
+          "left": 24
+        },
+        "titleRuns": [
+          {
+            "x": 24,
+            "y": 171.34375,
+            "width": 497.921875,
+            "height": 61,
+            "top": 171.34375,
+            "right": 521.921875,
+            "bottom": 232.34375,
+            "left": 24
+          },
+          {
+            "x": 521.921875,
+            "y": 171.34375,
+            "width": 0,
+            "height": 61,
+            "top": 171.34375,
+            "right": 521.921875,
+            "bottom": 232.34375,
+            "left": 521.921875
+          },
+          {
+            "x": 24,
+            "y": 230.140625,
+            "width": 286.8125,
+            "height": 61,
+            "top": 230.140625,
+            "right": 310.8125,
+            "bottom": 291.140625,
+            "left": 24
+          },
+          {
+            "x": 24,
+            "y": 230.140625,
+            "width": 286.8125,
+            "height": 61,
+            "top": 230.140625,
+            "right": 310.8125,
+            "bottom": 291.140625,
+            "left": 24
+          },
+          {
+            "x": 310.8125,
+            "y": 230.140625,
+            "width": 124.484375,
+            "height": 61,
+            "top": 230.140625,
+            "right": 435.296875,
+            "bottom": 291.140625,
+            "left": 310.8125
+          }
+        ],
+        "ctas": [
+          {
+            "x": 24,
+            "y": 398.4375,
+            "width": 234,
+            "height": 55.5,
+            "top": 398.4375,
+            "right": 258,
+            "bottom": 453.9375,
+            "left": 24
+          },
+          {
+            "x": 270,
+            "y": 398.4375,
+            "width": 234,
+            "height": 55.5,
+            "top": 398.4375,
+            "right": 504,
+            "bottom": 453.9375,
+            "left": 270
+          }
+        ],
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 768,
+          "height": 79,
+          "top": 0,
+          "right": 768,
+          "bottom": 79,
+          "left": 0
+        },
+        "motion": {
+          "x": 24,
+          "y": 952,
+          "width": 115.5625,
+          "height": 44,
+          "top": 952,
+          "right": 139.5625,
+          "bottom": 996,
+          "left": 24
+        },
+        "phone": {
+          "x": 678,
+          "y": 934,
+          "width": 60,
+          "height": 60,
+          "top": 934,
+          "right": 738,
+          "bottom": 994,
+          "left": 678
+        },
+        "image": "https://franchise.hairlove.kr/assets/salon-hero-1672.webp",
+        "animationDuration": "26s"
+      },
+      "images": [
+        {
+          "src": "assets/logo_green.png",
+          "loaded": true
+        },
+        {
+          "src": "assets/salon-hero-1672.webp",
+          "loaded": true
+        },
+        {
+          "src": "assets/dye_poster.jpg",
+          "loaded": true
+        },
+        {
+          "src": "assets/essence_poster.jpg",
+          "loaded": true
+        },
+        {
+          "src": "assets/logo_white.png",
+          "loaded": true
+        }
+      ],
+      "checks": [
+        "layout",
+        "loading",
+        "pause/resume",
+        "persisted preference",
+        "offscreen pause/resume",
+        "hover/focus pause",
+        "simulated hidden tab",
+        "dynamic reduced motion",
+        "navigation",
+        "FAQ",
+        "keyboard lightbox",
+        "required/consent validation",
+        "mocked form success/error/offline"
+      ],
+      "mockedFormRequests": 3
+    },
+    {
+      "viewport": {
+        "width": 1100,
+        "height": 900
+      },
+      "geometry": {
+        "viewport": 1100,
+        "bodyWidth": 1100,
+        "title": {
+          "x": 24,
+          "y": 324.34375,
+          "width": 800,
+          "height": 117.03125,
+          "top": 324.34375,
+          "right": 824,
+          "bottom": 441.375,
+          "left": 24
+        },
+        "titleRuns": [
+          {
+            "x": 24,
+            "y": 323.34375,
+            "width": 492.265625,
+            "height": 60,
+            "top": 323.34375,
+            "right": 516.265625,
+            "bottom": 383.34375,
+            "left": 24
+          },
+          {
+            "x": 516.265625,
+            "y": 323.34375,
+            "width": 0,
+            "height": 60,
+            "top": 323.34375,
+            "right": 516.265625,
+            "bottom": 383.34375,
+            "left": 516.265625
+          },
+          {
+            "x": 24,
+            "y": 381.859375,
+            "width": 283.59375,
+            "height": 60,
+            "top": 381.859375,
+            "right": 307.59375,
+            "bottom": 441.859375,
+            "left": 24
+          },
+          {
+            "x": 24,
+            "y": 381.859375,
+            "width": 283.59375,
+            "height": 60,
+            "top": 381.859375,
+            "right": 307.59375,
+            "bottom": 441.859375,
+            "left": 24
+          },
+          {
+            "x": 307.59375,
+            "y": 381.859375,
+            "width": 123.078125,
+            "height": 60,
+            "top": 381.859375,
+            "right": 430.671875,
+            "bottom": 441.859375,
+            "left": 307.59375
+          }
+        ],
+        "ctas": [
+          {
+            "x": 24,
+            "y": 564.25,
+            "width": 200.734375,
+            "height": 61.1875,
+            "top": 564.25,
+            "right": 224.734375,
+            "bottom": 625.4375,
+            "left": 24
+          },
+          {
+            "x": 240.734375,
+            "y": 564.25,
+            "width": 200.734375,
+            "height": 61.1875,
+            "top": 564.25,
+            "right": 441.46875,
+            "bottom": 625.4375,
+            "left": 240.734375
+          }
+        ],
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1100,
+          "height": 79,
+          "top": 0,
+          "right": 1100,
+          "bottom": 79,
+          "left": 0
+        },
+        "motion": {
+          "x": 24,
+          "y": 820,
+          "width": 119.453125,
+          "height": 44,
+          "top": 820,
+          "right": 143.453125,
+          "bottom": 864,
+          "left": 24
+        },
+        "phone": {
+          "x": 1010,
+          "y": 810,
+          "width": 60,
+          "height": 60,
+          "top": 810,
+          "right": 1070,
+          "bottom": 870,
+          "left": 1010
+        },
+        "image": "https://franchise.hairlove.kr/assets/salon-hero-1672.webp",
+        "animationDuration": "26s"
+      },
+      "images": [
+        {
+          "src": "assets/logo_green.png",
+          "loaded": true
+        },
+        {
+          "src": "assets/salon-hero-1672.webp",
+          "loaded": true
+        },
+        {
+          "src": "assets/dye_poster.jpg",
+          "loaded": true
+        },
+        {
+          "src": "assets/essence_poster.jpg",
+          "loaded": true
+        },
+        {
+          "src": "assets/logo_white.png",
+          "loaded": true
+        }
+      ],
+      "checks": [
+        "layout",
+        "loading",
+        "pause/resume",
+        "persisted preference",
+        "offscreen pause/resume",
+        "hover/focus pause",
+        "simulated hidden tab",
+        "dynamic reduced motion",
+        "navigation",
+        "FAQ",
+        "keyboard lightbox",
+        "required/consent validation",
+        "mocked form success/error/offline"
+      ],
+      "mockedFormRequests": 3
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "geometry": {
+        "viewport": 1440,
+        "bodyWidth": 1440,
+        "title": {
+          "x": 144,
+          "y": 306.265625,
+          "width": 800,
+          "height": 153.1875,
+          "top": 306.265625,
+          "right": 944,
+          "bottom": 459.453125,
+          "left": 144
+        },
+        "titleRuns": [
+          {
+            "x": 144,
+            "y": 304.265625,
+            "width": 649.390625,
+            "height": 79,
+            "top": 304.265625,
+            "right": 793.390625,
+            "bottom": 383.265625,
+            "left": 144
+          },
+          {
+            "x": 793.390625,
+            "y": 304.265625,
+            "width": 0,
+            "height": 79,
+            "top": 304.265625,
+            "right": 793.390625,
+            "bottom": 383.265625,
+            "left": 793.390625
+          },
+          {
+            "x": 144,
+            "y": 380.859375,
+            "width": 374.03125,
+            "height": 79,
+            "top": 380.859375,
+            "right": 518.03125,
+            "bottom": 459.859375,
+            "left": 144
+          },
+          {
+            "x": 144,
+            "y": 380.859375,
+            "width": 374.03125,
+            "height": 79,
+            "top": 380.859375,
+            "right": 518.03125,
+            "bottom": 459.859375,
+            "left": 144
+          },
+          {
+            "x": 518.03125,
+            "y": 380.859375,
+            "width": 162.359375,
+            "height": 79,
+            "top": 380.859375,
+            "right": 680.390625,
+            "bottom": 459.859375,
+            "left": 518.03125
+          }
+        ],
+        "ctas": [
+          {
+            "x": 144,
+            "y": 582.328125,
+            "width": 200.734375,
+            "height": 61.1875,
+            "top": 582.328125,
+            "right": 344.734375,
+            "bottom": 643.515625,
+            "left": 144
+          },
+          {
+            "x": 360.734375,
+            "y": 582.328125,
+            "width": 200.734375,
+            "height": 61.1875,
+            "top": 582.328125,
+            "right": 561.46875,
+            "bottom": 643.515625,
+            "left": 360.734375
+          }
+        ],
+        "header": {
+          "x": 0,
+          "y": 0,
+          "width": 1440,
+          "height": 79,
+          "top": 0,
+          "right": 1440,
+          "bottom": 79,
+          "left": 0
+        },
+        "motion": {
+          "x": 144,
+          "y": 820,
+          "width": 119.453125,
+          "height": 44,
+          "top": 820,
+          "right": 263.453125,
+          "bottom": 864,
+          "left": 144
+        },
+        "phone": {
+          "x": 1350,
+          "y": 810,
+          "width": 60,
+          "height": 60,
+          "top": 810,
+          "right": 1410,
+          "bottom": 870,
+          "left": 1350
+        },
+        "image": "https://franchise.hairlove.kr/assets/salon-hero-1672.webp",
+        "animationDuration": "26s"
+      },
+      "images": [
+        {
+          "src": "assets/logo_green.png",
+          "loaded": true
+        },
+        {
+          "src": "assets/salon-hero-1672.webp",
+          "loaded": true
+        },
+        {
+          "src": "assets/dye_poster.jpg",
+          "loaded": true
+        },
+        {
+          "src": "assets/essence_poster.jpg",
+          "loaded": true
+        },
+        {
+          "src": "assets/logo_white.png",
+          "loaded": true
+        }
+      ],
+      "checks": [
+        "layout",
+        "loading",
+        "pause/resume",
+        "persisted preference",
+        "offscreen pause/resume",
+        "hover/focus pause",
+        "simulated hidden tab",
+        "dynamic reduced motion",
+        "navigation",
+        "FAQ",
+        "keyboard lightbox",
+        "required/consent validation",
+        "mocked form success/error/offline"
+      ],
+      "mockedFormRequests": 3
+    }
+  ],
+  "noJavaScript": "Visible content; image motion stays paused",
+  "additionalChecks": {
+    "mobileDPR2": "390px: 1672px hero image loaded",
+    "videoPlayback": "Both MP4s played to the end in Chromium; no media errors"
+  }
+}
