@@ -331,7 +331,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .hero-media::after {
     content: '';
+    z-index: 4;
     background: linear-gradient(90deg, rgba(253, 251, 247, 0.96) 0%, rgba(253, 251, 247, 0.85) 35%, rgba(253, 251, 247, 0.18) 68%, transparent 100%);
+}
+
+.hero-camera {
+    position: absolute;
+    inset: 0;
+    transform-origin: 70% 50%;
+    transform: translate3d(1.5%, 0, 0) scale(1.08);
+    animation: salon-travel 24s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
 }
 
 .hero-image {
@@ -339,13 +348,69 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
     object-fit: cover;
     object-position: center;
-    transform: scale(1.025);
-    animation: salon-drift 26s ease-in-out infinite;
 }
 
-@keyframes salon-drift {
-    0%, 100% { transform: scale(1.025) translate3d(0, 0, 0); }
-    50% { transform: scale(1.085) translate3d(-1%, -0.5%, 0); }
+@keyframes salon-travel {
+    0%, 100% { transform: translate3d(1.5%, 0, 0) scale(1.08); }
+    50% { transform: translate3d(-1.8%, -0.8%, 0) scale(1.16); }
+}
+
+/* Light and shadows move independently of the photograph, like a quiet
+   afternoon in the salon. All layers are decorative and ignore pointer input. */
+.hero-daylight,
+.hero-window-shadow,
+.hero-leaf-shadow {
+    position: absolute;
+    pointer-events: none;
+}
+
+.hero-daylight {
+    inset: -20% -30%;
+    z-index: 2;
+    background: linear-gradient(112deg,
+        transparent 34%, rgba(255, 230, 171, 0.08) 38%,
+        rgba(255, 244, 208, 0.75) 42%, rgba(255, 251, 235, 0.85) 44%,
+        rgba(255, 239, 196, 0.24) 50%, transparent 57%);
+    transform: translate3d(14%, 0, 0);
+    opacity: 0.55;
+    animation: afternoon-light 20s ease-in-out infinite;
+}
+
+@keyframes afternoon-light {
+    0%, 100% { transform: translate3d(14%, -2%, 0) rotate(-3deg); opacity: 0.55; }
+    50% { transform: translate3d(-14%, 3%, 0) rotate(3deg); opacity: 0.9; }
+}
+
+.hero-window-shadow {
+    z-index: 1;
+    inset: -15% -18% -20% 42%;
+    background: repeating-linear-gradient(90deg,
+        transparent 0 25%, rgba(49, 38, 20, 0.18) 27% 28%, transparent 30% 34%);
+    transform: skewX(-26deg) translate3d(6%, 0, 0);
+    animation: window-light 26s ease-in-out infinite;
+}
+
+@keyframes window-light {
+    0%, 100% { transform: skewX(-26deg) translate3d(6%, -2%, 0); opacity: 0.65; }
+    50% { transform: skewX(-30deg) translate3d(-10%, 4%, 0); opacity: 0.95; }
+}
+
+.hero-leaf-shadow {
+    z-index: 3;
+    top: -18%;
+    right: -13%;
+    width: 85%;
+    height: 135%;
+    background: url('assets/salon-leaf-shadow.svg') center / contain no-repeat;
+    transform-origin: 95% 0;
+    transform: rotate(-8deg) translate3d(2%, 0, 0);
+    opacity: 0.25;
+    animation: leaf-shadow-sway 14s ease-in-out infinite;
+}
+
+@keyframes leaf-shadow-sway {
+    0%, 100% { transform: rotate(-8deg) translate3d(2%, 0, 0); opacity: 0.25; }
+    50% { transform: rotate(5deg) translate3d(-3%, 2%, 0); opacity: 0.38; }
 }
 
 .hero-content {
@@ -442,7 +507,7 @@ h1, h2, h3, h4, h5, h6 {
     right: max(110px, calc((100% - 1152px) / 2));
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 24px;
 }
 
@@ -455,40 +520,6 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.75rem;
     letter-spacing: 2px;
     color: var(--primary-dark);
-}
-
-.motion-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-    min-height: 44px;
-    padding: 10px 16px;
-    border: 1px solid rgba(45, 74, 54, 0.24);
-    border-radius: 24px;
-    background: rgba(253, 251, 247, 0.92);
-    color: var(--primary-color);
-    font-size: 0.8rem;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.motion-toggle[hidden] {
-    display: none;
-}
-
-.motion-toggle:hover {
-    background: var(--bg-cream-dark);
-}
-
-.motion-toggle:disabled {
-    cursor: default;
-}
-
-.motion-icon {
-    width: 14px;
-    font-size: 0.95rem;
-    line-height: 1;
 }
 
 /* 5. Sections (General Styling) */
@@ -707,16 +738,28 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    animation: poster-breathe 18s ease-in-out infinite;
 }
 
-@keyframes poster-breathe {
-    0%, 100% { transform: scale(0.985) translateY(0); }
-    50% { transform: scale(1) translateY(-3px); }
+.product-reflection {
+    position: absolute;
+    top: 0;
+    bottom: 44px;
+    left: 0;
+    width: 55%;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.38) 48%, rgba(255, 243, 212, 0.12) 64%, transparent);
+    transform: translateX(-160%) skewX(-18deg);
+    animation: product-light 12s ease-in-out infinite;
+}
+
+@keyframes product-light {
+    0%, 12% { transform: translateX(-160%) skewX(-18deg); }
+    55%, 100% { transform: translateX(290%) skewX(-18deg); }
 }
 
 .zoom-overlay {
     position: absolute;
+    z-index: 1;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -1628,13 +1671,14 @@ html.reveal-ready .scroll-reveal.active {
     transform: translateY(0);
 }
 
-/* Start still; JavaScript enables only images currently in view. */
+/* Start still; JavaScript enables layers only while their scene is in view. */
 [data-motion] {
     animation-play-state: paused;
 }
 
 html.motion-ready [data-motion].is-in-view {
     animation-play-state: running;
+    will-change: transform, opacity;
 }
 
 html.motion-paused [data-motion],
@@ -1758,6 +1802,22 @@ html.motion-paused .scroll-reveal {
 
     .hero-image {
         object-position: 70% center;
+    }
+
+    .hero-camera {
+        transform-origin: 70% 65%;
+    }
+
+    .hero-leaf-shadow {
+        top: 28%;
+        right: -40%;
+        width: 160%;
+        height: 90%;
+        opacity: 0.25;
+    }
+
+    .hero-daylight {
+        inset: 12% -65% -20%;
     }
 
     .hero-media::after {
@@ -1935,5 +1995,12 @@ html.motion-paused .scroll-reveal {
     html.reveal-ready .scroll-reveal {
         opacity: 1;
         transform: none;
+    }
+
+    .hero-daylight,
+    .hero-window-shadow,
+    .hero-leaf-shadow,
+    .product-reflection {
+        display: none;
     }
 }

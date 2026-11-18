@@ -1,17 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // One preference controls the hero, product images and reveal effects.
+    // Ambient scenes follow system preferences without playback controls.
     const root = document.documentElement;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const motionButtons = document.querySelectorAll('.motion-toggle');
-    const motionImages = document.querySelectorAll('[data-motion]');
-    const motionStorageKey = 'hairlove-motion-paused';
-    let userPaused = false;
-    try {
-        userPaused = localStorage.getItem(motionStorageKey) === 'true';
-    } catch { /* Motion controls also work when storage is unavailable. */ }
+    const motionScenes = document.querySelectorAll('[data-motion-scene]');
 
-    const motionIsPaused = () => userPaused || reducedMotion.matches;
+    // Ignore the previous version's saved pause setting: there is no longer a
+    // playback button, so returning visitors must not get stuck in that state.
+    const motionIsPaused = () => reducedMotion.matches;
     const finishCounters = () => {
         document.querySelectorAll('.stat-num').forEach(stat => {
             stat.textContent = stat.dataset.target;
@@ -21,32 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const syncMotion = () => {
         const paused = motionIsPaused();
         root.classList.toggle('motion-paused', paused);
-        motionButtons.forEach(button => {
-            button.hidden = false;
-            button.disabled = reducedMotion.matches;
-            button.setAttribute('aria-pressed', String(paused));
-            button.querySelector('.motion-label').textContent = reducedMotion.matches
-                ? '모션 감소 사용 중' : paused ? '움직임 재생' : '움직임 정지';
-            button.querySelector('.motion-icon').textContent = paused ? '▶' : 'Ⅱ';
-            button.title = reducedMotion.matches
-                ? '기기의 모션 감소 설정에 따라 움직임이 꺼져 있습니다.'
-                : '페이지 전체의 이미지와 움직임 효과를 제어합니다.';
-        });
         if (paused) {
             document.querySelectorAll('.scroll-reveal').forEach(el => el.classList.add('active'));
             finishCounters();
         }
     };
 
-    motionButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            userPaused = !userPaused;
-            try {
-                localStorage.setItem(motionStorageKey, String(userPaused));
-            } catch { /* Keep the preference for this page even without storage. */ }
-            syncMotion();
-        });
-    });
     reducedMotion.addEventListener('change', syncMotion);
     syncMotion();
 
@@ -56,9 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if ('IntersectionObserver' in window) {
         const motionObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => entry.target.classList.toggle('is-in-view', entry.isIntersecting));
+            entries.forEach(entry => {
+                entry.target.querySelectorAll('[data-motion]').forEach(layer => {
+                    layer.classList.toggle('is-in-view', entry.isIntersecting);
+                });
+            });
         }, { threshold: 0 });
-        motionImages.forEach(img => motionObserver.observe(img));
+        // Observe the stable scene boundary, not its moving/oversized layers.
+        motionScenes.forEach(scene => motionObserver.observe(scene));
         root.classList.add('motion-ready');
     }
 

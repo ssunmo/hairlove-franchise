@@ -51,12 +51,8 @@ async function record(browser, viewport, filename, actions) {
     const browser = await chromium.launch({ headless: true, chromiumSandbox: true, ...(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {}) });
     try {
         if (process.env.RECORD_MODE !== 'mobile') await record(browser, { width: 1440, height: 900 }, path.join(output, 'desktop-preview.mp4'), async page => {
-            await page.waitForTimeout(26500);
-            await page.locator('#hero .motion-toggle').click();
-            await page.waitForTimeout(2200);
-            await page.locator('#hero .motion-toggle').click();
+            await page.waitForTimeout(24500);
             await page.mouse.move(20, 100);
-            await page.waitForTimeout(2200);
             await page.locator('.nav-menu a[href="#pb-products"]').click();
             await page.waitForTimeout(2000);
             await page.locator('.poster-preview').first().evaluate(el => el.scrollIntoView({ block: 'center', behavior: 'smooth' }));
@@ -67,11 +63,7 @@ async function record(browser, viewport, filename, actions) {
             await page.waitForTimeout(1000);
         });
         if (process.env.RECORD_MODE !== 'desktop') await record(browser, { width: 390, height: 844 }, path.join(output, 'mobile-preview.mp4'), async page => {
-            await page.waitForTimeout(6500);
-            await page.locator('#hero .motion-toggle').click();
-            await page.waitForTimeout(1800);
-            await page.locator('#hero .motion-toggle').click();
-            await page.waitForTimeout(1800);
+            await page.waitForTimeout(12500);
             await page.locator('#mobile-toggle').click();
             await page.waitForTimeout(1000);
             await page.locator('.drawer-link[href="#pb-products"]').click();

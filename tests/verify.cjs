@@ -71,66 +71,65 @@ async function checkLayout(page, width) {
             titleRuns: [...range.getClientRects()].map(r => r.toJSON()),
             ctas: [...document.querySelectorAll('.hero-buttons a')].map(el => el.getBoundingClientRect().toJSON()),
             header: rect('#main-header'),
-            motion: rect('#hero .motion-toggle'),
             phone: rect('.floating-quick-dial'),
             image: document.querySelector('.hero-image').currentSrc,
-            animationDuration: getComputedStyle(document.querySelector('.hero-image')).animationDuration
+            animationDuration: getComputedStyle(document.querySelector('.hero-camera')).animationDuration,
+            playbackControls: document.querySelectorAll('.motion-toggle').length
         };
     });
     assert(geometry.bodyWidth <= width, `Horizontal overflow at ${width}: ${geometry.bodyWidth}`);
-    for (const rect of [...geometry.titleRuns, ...geometry.ctas, geometry.motion]) {
+    for (const rect of [...geometry.titleRuns, ...geometry.ctas]) {
         assert(rect.left >= -0.5 && rect.right <= width + 0.5, `Clipped title/button at ${width}: ${JSON.stringify(rect)}`);
     }
     const overlaps = (a, b) => a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
     assert(!overlaps(...geometry.ctas), 'Hero CTAs overlap');
-    assert(!overlaps(geometry.motion, geometry.phone), 'Motion and phone controls overlap');
     assert(geometry.title.top >= geometry.header.bottom, 'Header covers hero title');
-    assert.equal(geometry.animationDuration, '26s');
+    assert.equal(geometry.animationDuration, '24s');
+    assert.equal(geometry.playbackControls, 0, 'Playback controls must be removed');
+    assert.equal(await page.getByRole('button', { name: /움직임|모션|재생|정지/ }).count(), 0);
     return geometry;
 }
 
 async function checkMotion(page) {
-    const hero = '.hero-image';
+    const hero = '.hero-camera';
+    const layers = ['.hero-camera', '.hero-daylight', '.hero-window-shadow', '.hero-leaf-shadow'];
     await waitState(page, hero, 'running');
     const start = await animationTime(page, hero);
-    await page.waitForTimeout(400);
+    const titleBefore = await page.locator('.hero-title').boundingBox();
+    const transformsBefore = await page.locator('#hero [data-motion]').evaluateAll(els => els.map(el => getComputedStyle(el).transform));
+    await page.waitForTimeout(700);
     assert(await animationTime(page, hero) > start + 200, 'Hero animation did not advance');
-
-    await page.locator('#hero .motion-toggle').click();
-    await waitState(page, hero, 'paused');
-    await page.waitForTimeout(80);
-    const frozen = await animationTime(page, hero);
-    await page.waitForTimeout(350);
-    assert(Math.abs(await animationTime(page, hero) - frozen) < 30, 'Pause did not freeze animation');
-    assert.deepEqual(await page.locator('.motion-toggle').evaluateAll(buttons => buttons.map(button => button.getAttribute('aria-pressed'))), ['true', 'true']);
-
-    await ready(page);
-    assert.equal(await playState(page, hero), 'paused', 'Preference lost after reload');
-    await page.locator('#hero .motion-toggle').click();
-    await waitState(page, hero, 'running');
+    const transformsAfter = await page.locator('#hero [data-motion]').evaluateAll(els => els.map(el => getComputedStyle(el).transform));
+    assert(transformsBefore.every((value, index) => value !== transformsAfter[index]), 'One of the ambient layers is static');
+    assert.deepEqual(await page.locator('.hero-title').boundingBox(), titleBefore, 'Hero text must stay still');
+    for (const selector of layers) await waitState(page, selector, 'running');
 
     await page.mouse.move(1, 1);
     await scrollTo(page, '.poster-preview');
-    await waitState(page, hero, 'paused');
-    await waitState(page, '.poster-preview img', 'running');
+    for (const selector of layers) await waitState(page, selector, 'paused');
+    const frozen = await animationTime(page, hero);
+    await page.waitForTimeout(350);
+    assert(Math.abs(await animationTime(page, hero) - frozen) < 30, 'Offscreen scene did not freeze');
+    await waitState(page, '.product-reflection', 'running');
+    assert.equal(await page.locator('.poster-preview img').first().evaluate(el => getComputedStyle(el).transform), 'none', 'Product text must stay still');
     await page.locator('.poster-preview').first().hover();
-    await waitState(page, '.poster-preview img', 'paused');
+    await waitState(page, '.product-reflection', 'paused');
     await page.mouse.move(1, 1);
-    await waitState(page, '.poster-preview img', 'running');
+    await waitState(page, '.product-reflection', 'running');
     await page.locator('.poster-preview').first().focus();
-    await waitState(page, '.poster-preview img', 'paused');
+    await waitState(page, '.product-reflection', 'paused');
     await page.locator('.poster-preview').first().evaluate(el => el.blur());
-    await waitState(page, '.poster-preview img', 'running');
+    await waitState(page, '.product-reflection', 'running');
 
     await scrollTo(page, '#hero');
-    await waitState(page, hero, 'running');
+    for (const selector of layers) await waitState(page, selector, 'running');
     // Synthetic visibility event verifies the tab-background handler separately
     // from the real IntersectionObserver viewport checks above.
     await page.evaluate(() => {
         Object.defineProperty(document, 'hidden', { configurable: true, value: true });
         document.dispatchEvent(new Event('visibilitychange'));
     });
-    await waitState(page, hero, 'paused');
+    for (const selector of layers) await waitState(page, selector, 'paused');
     await page.evaluate(() => {
         delete document.hidden;
         document.dispatchEvent(new Event('visibilitychange'));
@@ -138,10 +137,12 @@ async function checkMotion(page) {
     await waitState(page, hero, 'running');
 
     await page.emulateMedia({ reducedMotion: 'reduce' });
-    await page.waitForFunction(() => document.querySelector('.motion-toggle').disabled);
-    assert.equal(await page.locator(hero).evaluate(el => getComputedStyle(el).animationName), 'none');
+    await page.waitForFunction(() => document.documentElement.classList.contains('motion-paused'));
+    for (const selector of layers) {
+        assert.equal(await page.locator(selector).evaluate(el => getComputedStyle(el).animationName), 'none');
+    }
+    assert.equal(await page.locator('.hero-daylight').evaluate(el => getComputedStyle(el).display), 'none');
     assert.equal(await page.locator('html').evaluate(el => getComputedStyle(el).scrollBehavior), 'auto');
-    assert(await page.locator('.motion-label').first().textContent() === '모션 감소 사용 중');
     await page.emulateMedia({ reducedMotion: 'no-preference' });
     await waitState(page, hero, 'running');
 }
@@ -244,6 +245,9 @@ async function run() {
         for (const viewport of viewports) {
             const errors = [];
             const context = await browser.newContext({ viewport, deviceScaleFactor: 1, reducedMotion: 'no-preference' });
+            // Returning users may have paused the previous version. The removed
+            // preference must never disable the new scene permanently.
+            await context.addInitScript(() => localStorage.setItem('hairlove-motion-paused', 'true'));
             const page = await context.newPage();
             const mode = { value: 'success', requests: [] };
             await attachRoutes(page, errors, mode);
@@ -254,7 +258,7 @@ async function run() {
             const images = await checkExistingFeatures(page, viewport.width);
             await checkForm(page, mode);
             assert.deepEqual(errors, []);
-            report.results.push({ viewport, geometry, images, checks: ['layout', 'loading', 'pause/resume', 'persisted preference', 'offscreen pause/resume', 'hover/focus pause', 'simulated hidden tab', 'dynamic reduced motion', 'navigation', 'FAQ', 'keyboard lightbox', 'required/consent validation', 'mocked form success/error/offline'], mockedFormRequests: mode.requests.length });
+            report.results.push({ viewport, geometry, images, checks: ['layout', 'loading', 'no playback controls', 'four animated layers with stationary title', 'legacy pause setting ignored', 'offscreen pause/resume', 'product reflection hover/focus pause', 'stationary product text', 'simulated hidden tab', 'dynamic reduced motion', 'navigation', 'FAQ', 'keyboard lightbox', 'required/consent validation', 'mocked form success/error/offline'], mockedFormRequests: mode.requests.length });
             await context.close();
 
             // Also check reduced motion from the first render, without JavaScript toggling it.
@@ -262,8 +266,8 @@ async function run() {
             const reducedPage = await reduced.newPage();
             await attachRoutes(reducedPage, errors);
             await ready(reducedPage);
-            assert.equal(await reducedPage.locator('.hero-image').evaluate(el => getComputedStyle(el).animationName), 'none');
-            assert(await reducedPage.locator('.motion-toggle').first().isDisabled());
+            assert(await reducedPage.locator('[data-motion]').evaluateAll(els => els.every(el => getComputedStyle(el).animationName === 'none')));
+            assert.equal(await reducedPage.locator('.motion-toggle').count(), 0);
             assert(await reducedPage.locator('.scroll-reveal').evaluateAll(els => els.every(el => getComputedStyle(el).opacity === '1')));
             assert.deepEqual(errors, []);
             await reduced.close();
@@ -277,7 +281,7 @@ async function run() {
         await attachRoutes(page, errors);
         await page.goto(origin + '/');
         assert(await page.locator('.scroll-reveal').evaluateAll(els => els.every(el => getComputedStyle(el).opacity === '1')));
-        assert.equal(await playState(page, '.hero-image'), 'paused');
+        assert.equal(await playState(page, '.hero-camera'), 'paused');
         await noJs.close();
         report.noJavaScript = 'Visible content; image motion stays paused';
         await fs.writeFile(path.join(output, 'verification.json'), JSON.stringify(report, null, 2) + '\n');
