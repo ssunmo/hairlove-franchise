@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" fill="none">
+  <!-- Decorative foliage shadow, composed for the right-hand salon wall. -->
+  <defs>
+    <filter id="soft-shadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+  <g filter="url(#soft-shadow)">
+  <g stroke="#29382a" stroke-linecap="round">
+    <path d="M1040-60C878 162 796 326 700 514S534 834 450 1030" stroke-width="13"/>
+    <path d="M858 178C736 176 650 131 579 44M801 300C877 358 938 407 1000 508M736 438C601 406 499 337 415 250M656 592C748 658 815 751 854 853M566 777C430 729 320 716 220 742" stroke-width="8"/>
+    <path d="M795 199L697 281M754 336L640 348M836 348L870 244M691 519L571 567M617 670L489 669M729 656L756 557M519 882L396 902" stroke-width="5"/>
+  </g>
+  <g fill="#29382a">
+    <ellipse cx="874" cy="135" rx="77" ry="25" transform="rotate(-34 874 135)"/>
+    <ellipse cx="785" cy="163" rx="69" ry="23" transform="rotate(21 785 163)"/>
+    <ellipse cx="671" cy="121" rx="63" ry="22" transform="rotate(38 671 121)"/>
+    <ellipse cx="599" cy="70" rx="66" ry="24" transform="rotate(52 599 70)"/>
+    <ellipse cx="716" cy="260" rx="75" ry="23" transform="rotate(-49 716 260)"/>
+    <ellipse cx="869" cy="273" rx="66" ry="23" transform="rotate(-74 869 273)"/>
+    <ellipse cx="911" cy="373" rx="71" ry="25" transform="rotate(29 911 373)"/>
+    <ellipse cx="972" cy="459" rx="78" ry="24" transform="rotate(56 972 459)"/>
+    <ellipse cx="651" cy="347" rx="69" ry="24" transform="rotate(-13 651 347)"/>
+    <ellipse cx="590" cy="366" rx="73" ry="24" transform="rotate(42 590 366)"/>
+    <ellipse cx="481" cy="300" rx="76" ry="25" transform="rotate(33 481 300)"/>
+    <ellipse cx="425" cy="249" rx="61" ry="21" transform="rotate(58 425 249)"/>
+    <ellipse cx="599" cy="553" rx="76" ry="26" transform="rotate(-21 599 553)"/>
+    <ellipse cx="748" cy="575" rx="70" ry="24" transform="rotate(-69 748 575)"/>
+    <ellipse cx="788" cy="711" rx="82" ry="25" transform="rotate(47 788 711)"/>
+    <ellipse cx="836" cy="806" rx="70" ry="23" transform="rotate(63 836 806)"/>
+    <ellipse cx="528" cy="668" rx="79" ry="25" transform="rotate(1 528 668)"/>
+    <ellipse cx="451" cy="740" rx="75" ry="25" transform="rotate(17 451 740)"/>
+    <ellipse cx="334" cy="731" rx="68" ry="23" transform="rotate(-12 334 731)"/>
+    <ellipse cx="241" cy="744" rx="64" ry="22" transform="rotate(-25 241 744)"/>
+    <ellipse cx="419" cy="898" rx="74" ry="24" transform="rotate(-17 419 898)"/>
+  </g>
+  </g>
+</svg>

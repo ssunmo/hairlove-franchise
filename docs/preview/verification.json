@@ -1,5 +1,5 @@
 {
-  "source": "ssunmo/hairlove-franchise (checked-out source; see Git commit containing this report)",
+  "source": "ssunmo/hairlove-franchise; source in the commit containing this report",
   "browser": "156.0.8078.79",
   "staticResponses": "intercepted from checkout",
   "realFormRequests": 0,
@@ -106,16 +106,6 @@
           "bottom": 79,
           "left": 0
         },
-        "motion": {
-          "x": 24,
-          "y": 772,
-          "width": 115.5625,
-          "height": 44,
-          "top": 772,
-          "right": 139.5625,
-          "bottom": 816,
-          "left": 24
-        },
         "phone": {
           "x": 270,
           "y": 754,
@@ -127,7 +117,8 @@
           "left": 270
         },
         "image": "https://franchise.hairlove.kr/assets/salon-hero-1672.webp",
-        "animationDuration": "26s"
+        "animationDuration": "24s",
+        "playbackControls": 0
       },
       "images": [
         {
@@ -154,10 +145,12 @@
       "checks": [
         "layout",
         "loading",
-        "pause/resume",
-        "persisted preference",
+        "no playback controls",
+        "four animated layers with stationary title",
+        "legacy pause setting ignored",
         "offscreen pause/resume",
-        "hover/focus pause",
+        "product reflection hover/focus pause",
+        "stationary product text",
         "simulated hidden tab",
         "dynamic reduced motion",
         "navigation",
@@ -270,16 +263,6 @@
           "bottom": 79,
           "left": 0
         },
-        "motion": {
-          "x": 24,
-          "y": 772,
-          "width": 115.5625,
-          "height": 44,
-          "top": 772,
-          "right": 139.5625,
-          "bottom": 816,
-          "left": 24
-        },
         "phone": {
           "x": 300,
           "y": 754,
@@ -291,7 +274,8 @@
           "left": 300
         },
         "image": "https://franchise.hairlove.kr/assets/salon-hero-1672.webp",
-        "animationDuration": "26s"
+        "animationDuration": "24s",
+        "playbackControls": 0
       },
       "images": [
         {
@@ -318,10 +302,12 @@
       "checks": [
         "layout",
         "loading",
-        "pause/resume",
-        "persisted preference",
+        "no playback controls",
+        "four animated layers with stationary title",
+        "legacy pause setting ignored",
         "offscreen pause/resume",
-        "hover/focus pause",
+        "product reflection hover/focus pause",
+        "stationary product text",
         "simulated hidden tab",
         "dynamic reduced motion",
         "navigation",
@@ -434,16 +420,6 @@
           "bottom": 79,
           "left": 0
         },
-        "motion": {
-          "x": 24,
-          "y": 952,
-          "width": 115.5625,
-          "height": 44,
-          "top": 952,
-          "right": 139.5625,
-          "bottom": 996,
-          "left": 24
-        },
         "phone": {
           "x": 678,
           "y": 934,
@@ -455,7 +431,8 @@
           "left": 678
         },
         "image": "https://franchise.hairlove.kr/assets/salon-hero-1672.webp",
-        "animationDuration": "26s"
+        "animationDuration": "24s",
+        "playbackControls": 0
       },
       "images": [
         {
@@ -482,10 +459,12 @@
       "checks": [
         "layout",
         "loading",
-        "pause/resume",
-        "persisted preference",
+        "no playback controls",
+        "four animated layers with stationary title",
+        "legacy pause setting ignored",
         "offscreen pause/resume",
-        "hover/focus pause",
+        "product reflection hover/focus pause",
+        "stationary product text",
         "simulated hidden tab",
         "dynamic reduced motion",
         "navigation",
@@ -598,16 +577,6 @@
           "bottom": 79,
           "left": 0
         },
-        "motion": {
-          "x": 24,
-          "y": 820,
-          "width": 119.453125,
-          "height": 44,
-          "top": 820,
-          "right": 143.453125,
-          "bottom": 864,
-          "left": 24
-        },
         "phone": {
           "x": 1010,
           "y": 810,
@@ -619,7 +588,8 @@
           "left": 1010
         },
         "image": "https://franchise.hairlove.kr/assets/salon-hero-1672.webp",
-        "animationDuration": "26s"
+        "animationDuration": "24s",
+        "playbackControls": 0
       },
       "images": [
         {
@@ -646,10 +616,12 @@
       "checks": [
         "layout",
         "loading",
-        "pause/resume",
-        "persisted preference",
+        "no playback controls",
+        "four animated layers with stationary title",
+        "legacy pause setting ignored",
         "offscreen pause/resume",
-        "hover/focus pause",
+        "product reflection hover/focus pause",
+        "stationary product text",
         "simulated hidden tab",
         "dynamic reduced motion",
         "navigation",
@@ -762,16 +734,6 @@
           "bottom": 79,
           "left": 0
         },
-        "motion": {
-          "x": 144,
-          "y": 820,
-          "width": 119.453125,
-          "height": 44,
-          "top": 820,
-          "right": 263.453125,
-          "bottom": 864,
-          "left": 144
-        },
         "phone": {
           "x": 1350,
           "y": 810,
@@ -783,7 +745,8 @@
           "left": 1350
         },
         "image": "https://franchise.hairlove.kr/assets/salon-hero-1672.webp",
-        "animationDuration": "26s"
+        "animationDuration": "24s",
+        "playbackControls": 0
       },
       "images": [
         {
@@ -810,10 +773,12 @@
       "checks": [
         "layout",
         "loading",
-        "pause/resume",
-        "persisted preference",
+        "no playback controls",
+        "four animated layers with stationary title",
+        "legacy pause setting ignored",
         "offscreen pause/resume",
-        "hover/focus pause",
+        "product reflection hover/focus pause",
+        "stationary product text",
         "simulated hidden tab",
         "dynamic reduced motion",
         "navigation",
@@ -826,8 +791,8 @@
     }
   ],
   "noJavaScript": "Visible content; image motion stays paused",
-  "additionalChecks": {
-    "mobileDPR2": "390px: 1672px hero image loaded",
-    "videoPlayback": "Both MP4s played to the end in Chromium; no media errors"
+  "manualChecks": {
+    "mediaPlayback": "Both MP4s played to completion in Chromium without media errors",
+    "rendering": "Removed per-frame CSS blur and blending; observed rAF averages ~26ms at 1440px and ~17ms at 390px in headless Chromium; not a physical-device guarantee"
   }
 }
