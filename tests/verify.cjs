@@ -116,6 +116,10 @@ async function checkMotion(page) {
     await waitState(page, '.product-reflection', 'paused');
     await page.mouse.move(1, 1);
     await waitState(page, '.product-reflection', 'running');
+    await page.locator('.poster-preview').first().focus();
+    await waitState(page, '.product-reflection', 'paused');
+    await page.locator('.poster-preview').first().evaluate(el => el.blur());
+    await waitState(page, '.product-reflection', 'running');
 
     await scrollTo(page, '#hero');
     for (const selector of layers) await waitState(page, selector, 'running');
@@ -170,8 +174,7 @@ async function checkExistingFeatures(page, width) {
     await faq.nth(1).click();
     assert.equal(await faq.nth(1).getAttribute('aria-expanded'), 'false');
 
-    assert.equal(await page.locator('.zoom-overlay, [data-lightbox], #lightbox').count(), 0);
-    assert.equal(await page.getByRole('button', { name: /포스터.*크게|확대 이미지/ }).count(), 0);
+    assert.equal(await page.locator('.zoom-overlay, .fa-magnifying-glass-plus').count(), 0);
     for (const index of [0, 1]) {
         const poster = page.locator('.poster-preview').nth(index);
         await poster.evaluate(el => el.scrollIntoView({ block: 'center', behavior: 'instant' }));
@@ -179,10 +182,30 @@ async function checkExistingFeatures(page, width) {
             const img = document.querySelectorAll('.poster-preview img')[index];
             return img.complete && img.naturalWidth > 0;
         }, index);
-        assert(await poster.evaluate(el => el.tagName === 'DIV' && el.tabIndex === -1 && !el.hasAttribute('role')));
-        assert.notEqual(await poster.evaluate(el => getComputedStyle(el).cursor), 'pointer');
-        await poster.click();
-        assert.equal(await page.locator('[role="dialog"]:visible').count(), 0);
+        assert.equal((await poster.textContent()).trim(), '', 'Poster must have no visible button label');
+        if (width <= 768) await poster.locator('img').tap();
+        else await poster.locator('img').click();
+        assert(await page.locator('#lightbox').isVisible());
+        await page.waitForFunction(() => document.querySelector('#lightbox-img').naturalWidth > 0);
+        assert.equal(await page.locator('#lightbox-img').getAttribute('src'), await poster.locator('img').getAttribute('src'));
+        assert(await page.locator('body').evaluate(el => el.classList.contains('no-scroll')));
+        assert(await page.locator('html').evaluate(el => el.classList.contains('overlay-open')));
+        await page.keyboard.press('Tab');
+        assert(await page.locator('.lightbox-close').evaluate(el => el === document.activeElement));
+        await page.keyboard.press('Shift+Tab');
+        assert(await page.locator('.lightbox-close').evaluate(el => el === document.activeElement));
+        if (index === 0) await page.keyboard.press('Escape');
+        else await page.locator('.lightbox-close').click();
+        assert(!await page.locator('#lightbox').isVisible());
+        assert(await poster.evaluate(el => el === document.activeElement));
+        assert(!await page.locator('body').evaluate(el => el.classList.contains('no-scroll')));
+
+        // Keyboard users can open the image without a separate visible control.
+        await page.keyboard.press(index === 0 ? 'Enter' : 'Space');
+        assert(await page.locator('#lightbox').isVisible());
+        await page.locator('#lightbox').click({ position: { x: 5, y: 5 } });
+        assert(!await page.locator('#lightbox').isVisible());
+        assert(await poster.evaluate(el => el === document.activeElement));
         assert(!await page.locator('body').evaluate(el => el.classList.contains('no-scroll')));
     }
 
@@ -191,7 +214,7 @@ async function checkExistingFeatures(page, width) {
         await scrollTo(page, selector);
         assert(await page.evaluate(() => document.body.scrollWidth <= innerWidth), `Overflow in ${selector} at ${width}`);
     }
-    const images = await page.locator('img').evaluateAll(imgs => imgs.map(img => ({ src: img.getAttribute('src'), loaded: img.complete && img.naturalWidth > 0 })));
+    const images = await page.locator('img:not(#lightbox-img)').evaluateAll(imgs => imgs.map(img => ({ src: img.getAttribute('src'), loaded: img.complete && img.naturalWidth > 0 })));
     assert(images.every(img => img.loaded), `Images failed to load: ${JSON.stringify(images)}`);
     return images;
 }
@@ -243,7 +266,7 @@ async function run() {
     try {
         for (const viewport of viewports) {
             const errors = [];
-            const context = await browser.newContext({ viewport, deviceScaleFactor: 1, reducedMotion: 'no-preference' });
+            const context = await browser.newContext({ viewport, hasTouch: viewport.width <= 768, deviceScaleFactor: 1, reducedMotion: 'no-preference' });
             // Returning users may have paused the previous version. The removed
             // preference must never disable the new scene permanently.
             await context.addInitScript(() => localStorage.setItem('hairlove-motion-paused', 'true'));
@@ -257,7 +280,7 @@ async function run() {
             const images = await checkExistingFeatures(page, viewport.width);
             await checkForm(page, mode);
             assert.deepEqual(errors, []);
-            report.results.push({ viewport, geometry, images, checks: ['layout', 'loading', 'no playback controls', 'four animated layers with stationary title', 'legacy pause setting ignored', 'offscreen pause/resume', 'product reflection hover pause', 'stationary product text', 'simulated hidden tab', 'dynamic reduced motion', 'navigation', 'FAQ', 'plain posters without zoom controls or dialog', 'required/consent validation', 'mocked form success/error/offline'], mockedFormRequests: mode.requests.length });
+            report.results.push({ viewport, geometry, images, checks: ['layout', 'loading', 'no playback controls', 'four animated layers with stationary title', 'legacy pause setting ignored', 'offscreen pause/resume', 'product reflection hover/focus pause', 'stationary product text', 'simulated hidden tab', 'dynamic reduced motion', 'navigation', 'FAQ', 'image click/tap enlargement without visible zoom label', 'keyboard enlargement, focus trap and return', 'Escape, close button and backdrop dismissal', 'required/consent validation', 'mocked form success/error/offline'], mockedFormRequests: mode.requests.length });
             await context.close();
 
             // Also check reduced motion from the first render, without JavaScript toggling it.

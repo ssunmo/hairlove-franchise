@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const syncOverlayState = () => {
-        const hasOverlay = !!document.querySelector('.mobile-drawer.open, .modal-overlay.open');
+        const hasOverlay = !!document.querySelector('.mobile-drawer.open, .lightbox-modal.open, .modal-overlay.open');
         document.body.classList.toggle('no-scroll', hasOverlay);
         root.classList.toggle('overlay-open', hasOverlay);
     };
@@ -338,15 +338,49 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 8. Mobile drawer keyboard navigation
+    // 8. Lightbox Modal functions
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = lightbox.querySelector('.lightbox-close');
+    let lightboxTrigger = null;
+
+    window.openLightbox = (imageSrc, trigger = document.activeElement) => {
+        if (lightbox && lightboxImg) {
+            lightboxTrigger = trigger;
+            lightboxImg.src = imageSrc;
+            lightboxImg.alt = trigger?.querySelector('img')?.alt || '확대 이미지';
+            lightbox.classList.add('open');
+            syncOverlayState();
+            lightboxClose.focus();
+        }
+    };
+
+    window.closeLightbox = () => {
+        if (lightbox) {
+            lightbox.classList.remove('open');
+            syncOverlayState();
+            lightboxImg.removeAttribute('src');
+            lightboxTrigger?.focus({ preventScroll: true });
+        }
+    };
+
+    document.querySelectorAll('[data-lightbox]').forEach(button => {
+        button.addEventListener('click', () => window.openLightbox(button.dataset.lightbox, button));
+    });
+    lightboxClose.addEventListener('click', window.closeLightbox);
+
     document.addEventListener('keydown', event => {
         if (event.key === 'Escape') {
+            if (lightbox.classList.contains('open')) window.closeLightbox();
             if (mobileDrawer.classList.contains('open')) {
                 setDrawerOpen(false);
                 mobileToggle.focus();
             }
         }
-        if (event.key === 'Tab' && mobileDrawer.classList.contains('open')) {
+        if (event.key === 'Tab' && lightbox.classList.contains('open')) {
+            event.preventDefault();
+            lightboxClose.focus();
+        } else if (event.key === 'Tab' && mobileDrawer.classList.contains('open')) {
             const lastLink = mobileDrawer.querySelector('.btn-drawer-cta');
             if (event.shiftKey && document.activeElement === mobileToggle) {
                 event.preventDefault();
@@ -357,5 +391,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    // Close lightbox on overlay click
+    if (lightbox) {
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                window.closeLightbox();
+            }
+        });
+    }
 
 });
