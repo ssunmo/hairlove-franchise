@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css?v=3.0">
+    <link rel="stylesheet" href="styles.css?v=3.1">
 </head>
 <body>
 
@@ -186,11 +186,10 @@
                     <!-- Product 1: PalSaekMiGa -->
                     <div class="product-item scroll-reveal">
                         <div class="product-display-box">
-                            <button class="poster-preview" type="button" data-motion-scene data-lightbox="assets/dye_poster.jpg" aria-label="팔색미가 헤어칼라크림 포스터 크게 보기" aria-haspopup="dialog">
+                            <div class="poster-preview" data-motion-scene>
                                 <img src="assets/dye_poster.jpg" alt="팔색미가 머릿결사랑 헤어칼라크림 포스터" width="724" height="1024" loading="lazy" decoding="async">
                                 <span class="product-reflection" data-motion aria-hidden="true"></span>
-                                <span class="zoom-overlay"><i class="fa-solid fa-magnifying-glass-plus" aria-hidden="true"></i> 포스터 크게 보기</span>
-                            </button>
+                            </div>
                         </div>
                         
                         <div class="product-info-box">
@@ -252,11 +251,10 @@
                     <!-- Product 2: Care Products -->
                     <div class="product-item reverse scroll-reveal">
                         <div class="product-display-box">
-                            <button class="poster-preview" type="button" data-motion-scene data-lightbox="assets/essence_poster.jpg" aria-label="프로페셔널 에센스 포스터 크게 보기" aria-haspopup="dialog">
+                            <div class="poster-preview" data-motion-scene>
                                 <img src="assets/essence_poster.jpg" alt="프로페셔널 에센스 설명 포스터" width="723" height="1024" loading="lazy" decoding="async">
                                 <span class="product-reflection" data-motion aria-hidden="true"></span>
-                                <span class="zoom-overlay"><i class="fa-solid fa-magnifying-glass-plus" aria-hidden="true"></i> 포스터 크게 보기</span>
-                            </button>
+                            </div>
                         </div>
                         
                         <div class="product-info-box">
@@ -625,12 +623,6 @@
         </div>
     </footer>
 
-    <!-- Lightbox Modal -->
-    <div class="lightbox-modal" id="lightbox" role="dialog" aria-modal="true" aria-label="제품 포스터 확대 보기">
-        <button class="lightbox-close" type="button" aria-label="확대 이미지 닫기">&times;</button>
-        <img class="lightbox-content" id="lightbox-img" alt="확대 이미지">
-    </div>
-
     <!-- Success Modal -->
     <div class="modal-overlay" id="success-modal">
         <div class="modal-content">
@@ -646,6 +638,6 @@
         <a href="tel:0323276788" aria-label="대표 번호로 전화 걸기"><i class="fa-solid fa-phone"></i></a>
     </div>
 
-    <script src="app.js?v=3.0"></script>
+    <script src="app.js?v=3.1"></script>
 </body>
 </html>

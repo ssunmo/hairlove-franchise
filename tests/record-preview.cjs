@@ -56,11 +56,7 @@ async function record(browser, viewport, filename, actions) {
             await page.locator('.nav-menu a[href="#pb-products"]').click();
             await page.waitForTimeout(2000);
             await page.locator('.poster-preview').first().evaluate(el => el.scrollIntoView({ block: 'center', behavior: 'smooth' }));
-            await page.waitForTimeout(2500);
-            await page.locator('.poster-preview').first().click();
-            await page.waitForTimeout(2000);
-            await page.keyboard.press('Escape');
-            await page.waitForTimeout(1000);
+            await page.waitForTimeout(5500);
         });
         if (process.env.RECORD_MODE !== 'desktop') await record(browser, { width: 390, height: 844 }, path.join(output, 'mobile-preview.mp4'), async page => {
             await page.waitForTimeout(12500);
@@ -68,10 +64,8 @@ async function record(browser, viewport, filename, actions) {
             await page.waitForTimeout(1000);
             await page.locator('.drawer-link[href="#pb-products"]').click();
             await page.waitForTimeout(2000);
-            await page.locator('.poster-preview').first().click();
-            await page.waitForTimeout(1800);
-            await page.locator('.lightbox-close').click();
-            await page.waitForTimeout(1000);
+            await page.locator('.poster-preview').first().evaluate(el => el.scrollIntoView({ block: 'center', behavior: 'smooth' }));
+            await page.waitForTimeout(2800);
         });
     } finally {
         await browser.close();
