@@ -25,7 +25,9 @@ async function record(browser, viewport, filename, actions) {
     });
     await cdp.send('Page.startScreencast', {
         format: 'jpeg', quality: 87,
-        maxWidth: viewport.width, maxHeight: viewport.height, everyNthFrame: 3
+        // Capture each repaint: skipping every third paint can omit the only
+        // frame that displays a decoded poster while the overlay pauses motion.
+        maxWidth: viewport.width, maxHeight: viewport.height, everyNthFrame: 1
     });
     await actions(page);
     await cdp.send('Page.stopScreencast');
@@ -58,6 +60,7 @@ async function record(browser, viewport, filename, actions) {
             await page.locator('.poster-preview').first().evaluate(el => el.scrollIntoView({ block: 'center', behavior: 'smooth' }));
             await page.waitForTimeout(2500);
             await page.locator('.poster-preview img').first().click();
+            await page.locator('#lightbox-img').evaluate(img => img.decode());
             await page.waitForTimeout(2000);
             await page.keyboard.press('Escape');
             await page.waitForTimeout(1000);
@@ -70,6 +73,7 @@ async function record(browser, viewport, filename, actions) {
             await page.waitForTimeout(2000);
             await page.locator('.poster-preview').first().evaluate(el => el.scrollIntoView({ block: 'center', behavior: 'smooth' }));
             await page.locator('.poster-preview img').first().click();
+            await page.locator('#lightbox-img').evaluate(img => img.decode());
             await page.waitForTimeout(1800);
             await page.locator('.lightbox-close').click();
             await page.waitForTimeout(1000);

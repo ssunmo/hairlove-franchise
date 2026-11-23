@@ -71,7 +71,6 @@ async function checkLayout(page, width) {
             titleRuns: [...range.getClientRects()].map(r => r.toJSON()),
             ctas: [...document.querySelectorAll('.hero-buttons a')].map(el => el.getBoundingClientRect().toJSON()),
             header: rect('#main-header'),
-            phone: rect('.floating-quick-dial'),
             image: document.querySelector('.hero-image').currentSrc,
             animationDuration: getComputedStyle(document.querySelector('.hero-camera')).animationDuration,
             playbackControls: document.querySelectorAll('.motion-toggle').length
@@ -92,7 +91,7 @@ async function checkLayout(page, width) {
 
 async function checkMotion(page) {
     const hero = '.hero-camera';
-    const layers = ['.hero-camera', '.hero-daylight', '.hero-window-shadow', '.hero-leaf-shadow'];
+    const layers = ['.hero-camera', '.hero-daylight'];
     await waitState(page, hero, 'running');
     const start = await animationTime(page, hero);
     const titleBefore = await page.locator('.hero-title').boundingBox();
@@ -105,7 +104,10 @@ async function checkMotion(page) {
     for (const selector of layers) await waitState(page, selector, 'running');
 
     await page.mouse.move(1, 1);
-    await scrollTo(page, '.poster-preview');
+    await page.locator('.poster-preview').first().evaluate(el => scrollTo({
+        top: Math.max(document.querySelector('#hero').offsetHeight + 1, el.getBoundingClientRect().top + scrollY - 110), behavior: 'instant'
+    }));
+    await page.waitForTimeout(900);
     for (const selector of layers) await waitState(page, selector, 'paused');
     const frozen = await animationTime(page, hero);
     await page.waitForTimeout(350);
@@ -187,7 +189,7 @@ async function checkExistingFeatures(page, width) {
         else await poster.locator('img').click();
         assert(await page.locator('#lightbox').isVisible());
         await page.waitForFunction(() => document.querySelector('#lightbox-img').naturalWidth > 0);
-        assert.equal(await page.locator('#lightbox-img').getAttribute('src'), await poster.locator('img').getAttribute('src'));
+        assert.equal(await page.locator('#lightbox-img').getAttribute('src'), await poster.getAttribute('data-lightbox'));
         assert(await page.locator('body').evaluate(el => el.classList.contains('no-scroll')));
         assert(await page.locator('html').evaluate(el => el.classList.contains('overlay-open')));
         await page.keyboard.press('Tab');
@@ -207,6 +209,14 @@ async function checkExistingFeatures(page, width) {
         assert(!await page.locator('#lightbox').isVisible());
         assert(await poster.evaluate(el => el === document.activeElement));
         assert(!await page.locator('body').evaluate(el => el.classList.contains('no-scroll')));
+    }
+
+    for (const details of await page.locator('.product-details, .brand-more').all()) {
+        await details.locator('summary').click();
+        assert(await details.evaluate(el => el.open));
+        assert(await page.evaluate(() => document.body.scrollWidth <= innerWidth), `Expanded product/story content overflows at ${width}`);
+        await details.locator('summary').click();
+        assert(!await details.evaluate(el => el.open));
     }
 
     // Walk the real page to trigger lazy images and check every visible section.
@@ -280,7 +290,7 @@ async function run() {
             const images = await checkExistingFeatures(page, viewport.width);
             await checkForm(page, mode);
             assert.deepEqual(errors, []);
-            report.results.push({ viewport, geometry, images, checks: ['layout', 'loading', 'no playback controls', 'four animated layers with stationary title', 'legacy pause setting ignored', 'offscreen pause/resume', 'product reflection hover/focus pause', 'stationary product text', 'simulated hidden tab', 'dynamic reduced motion', 'navigation', 'FAQ', 'image click/tap enlargement without visible zoom label', 'keyboard enlargement, focus trap and return', 'Escape, close button and backdrop dismissal', 'required/consent validation', 'mocked form success/error/offline'], mockedFormRequests: mode.requests.length });
+            report.results.push({ viewport, geometry, images, checks: ['layout', 'responsive image loading', 'no playback controls', 'portrait and daylight motion with stationary title', 'legacy pause setting ignored', 'offscreen pause/resume', 'product reflection hover/focus pause', 'stationary product text', 'simulated hidden tab', 'dynamic reduced motion', 'navigation', 'FAQ', 'image click/tap opens original poster without visible zoom label', 'keyboard enlargement, focus trap and return', 'Escape, close button and backdrop dismissal', 'product and story details', 'required/consent validation', 'mocked form success/error/offline'], mockedFormRequests: mode.requests.length });
             await context.close();
 
             // Also check reduced motion from the first render, without JavaScript toggling it.

@@ -1,5 +1,5 @@
 {
-  "source": "ssunmo/hairlove-franchise; source in the commit containing this report",
+  "source": "https://github.com/ssunmo/hairlove-franchise/tree/codex/warm-salon-redesign",
   "browser": "156.0.8078.79",
   "staticResponses": "intercepted from checkout",
   "realFormRequests": 0,
@@ -13,128 +13,112 @@
         "viewport": 360,
         "bodyWidth": 360,
         "title": {
-          "x": 24,
-          "y": 173.34375,
-          "width": 312,
-          "height": 73.5,
-          "top": 173.34375,
-          "right": 336,
-          "bottom": 246.84375,
-          "left": 24
+          "x": 20,
+          "y": 408.390625,
+          "width": 320,
+          "height": 93.171875,
+          "top": 408.390625,
+          "right": 340,
+          "bottom": 501.5625,
+          "left": 20
         },
         "titleRuns": [
           {
-            "x": 24,
-            "y": 172.34375,
-            "width": 306.40625,
-            "height": 38,
-            "top": 172.34375,
-            "right": 330.40625,
-            "bottom": 210.34375,
-            "left": 24
+            "x": 20,
+            "y": 407.390625,
+            "width": 215.96875,
+            "height": 46,
+            "top": 407.390625,
+            "right": 235.96875,
+            "bottom": 453.390625,
+            "left": 20
           },
           {
-            "x": 330.40625,
-            "y": 172.34375,
+            "x": 235.96875,
+            "y": 407.390625,
             "width": 0,
-            "height": 38,
-            "top": 172.34375,
-            "right": 330.40625,
-            "bottom": 210.34375,
-            "left": 330.40625
+            "height": 46,
+            "top": 407.390625,
+            "right": 235.96875,
+            "bottom": 453.390625,
+            "left": 235.96875
           },
           {
-            "x": 24,
-            "y": 209.09375,
-            "width": 176.5625,
-            "height": 38,
-            "top": 209.09375,
-            "right": 200.5625,
-            "bottom": 247.09375,
-            "left": 24
+            "x": 20,
+            "y": 452.1875,
+            "width": 159.625,
+            "height": 50,
+            "top": 452.1875,
+            "right": 179.625,
+            "bottom": 502.1875,
+            "left": 20
           },
           {
-            "x": 24,
-            "y": 209.09375,
-            "width": 176.5625,
-            "height": 38,
-            "top": 209.09375,
-            "right": 200.5625,
-            "bottom": 247.09375,
-            "left": 24
-          },
-          {
-            "x": 200.5625,
-            "y": 209.09375,
-            "width": 76.609375,
-            "height": 38,
-            "top": 209.09375,
-            "right": 277.171875,
-            "bottom": 247.09375,
-            "left": 200.5625
+            "x": 20,
+            "y": 452.1875,
+            "width": 159.625,
+            "height": 50,
+            "top": 452.1875,
+            "right": 179.625,
+            "bottom": 502.1875,
+            "left": 20
           }
         ],
         "ctas": [
           {
-            "x": 24,
-            "y": 382.09375,
-            "width": 312,
-            "height": 55.5,
-            "top": 382.09375,
-            "right": 336,
-            "bottom": 437.59375,
-            "left": 24
+            "x": 20,
+            "y": 609.15625,
+            "width": 139.28125,
+            "height": 58.796875,
+            "top": 609.15625,
+            "right": 159.28125,
+            "bottom": 667.953125,
+            "left": 20
           },
           {
-            "x": 24,
-            "y": 449.59375,
-            "width": 312,
-            "height": 55.5,
-            "top": 449.59375,
-            "right": 336,
-            "bottom": 505.09375,
-            "left": 24
+            "x": 179.28125,
+            "y": 617.453125,
+            "width": 81.203125,
+            "height": 42.1875,
+            "top": 617.453125,
+            "right": 260.484375,
+            "bottom": 659.640625,
+            "left": 179.28125
           }
         ],
         "header": {
           "x": 0,
           "y": 0,
           "width": 360,
-          "height": 79,
+          "height": 76,
           "top": 0,
           "right": 360,
-          "bottom": 79,
+          "bottom": 76,
           "left": 0
         },
-        "phone": {
-          "x": 270,
-          "y": 754,
-          "width": 60,
-          "height": 60,
-          "top": 754,
-          "right": 330,
-          "bottom": 814,
-          "left": 270
-        },
-        "image": "https://franchise.hairlove.kr/assets/salon-hero-1672.webp",
+        "image": "https://franchise.hairlove.kr/assets/salon-portrait-1672.webp",
         "animationDuration": "24s",
         "playbackControls": 0
       },
       "images": [
         {
-          "src": "assets/logo_green.png",
+          "src": "assets/logo_white.png",
+          "loaded": true
+        },
+        {
+          "src": "assets/salon-portrait-1672.webp",
+          "loaded": true
+        },
+        {
+          "src": "assets/palsaek-product-1200.webp",
+          "loaded": true
+        },
+        {
+          "src": "assets/essence-product-1200.webp",
           "loaded": true
         },
         {
           "src": "assets/salon-hero-1672.webp",
-          "loaded": true
-        },
-        {
-          "src": "assets/dye_poster.jpg",
-          "loaded": true
-        },
-        {
-          "src": "assets/essence_poster.jpg",
           "loaded": true
         },
         {
@@ -144,9 +128,9 @@
       ],
       "checks": [
         "layout",
-        "loading",
+        "responsive image loading",
         "no playback controls",
-        "four animated layers with stationary title",
+        "portrait and daylight motion with stationary title",
         "legacy pause setting ignored",
         "offscreen pause/resume",
         "product reflection hover/focus pause",
@@ -155,9 +139,10 @@
         "dynamic reduced motion",
         "navigation",
         "FAQ",
-        "image click/tap enlargement without visible zoom label",
+        "image click/tap opens original poster without visible zoom label",
         "keyboard enlargement, focus trap and return",
         "Escape, close button and backdrop dismissal",
+        "product and story details",
         "required/consent validation",
         "mocked form success/error/offline"
       ],
@@ -173,127 +158,111 @@
         "bodyWidth": 390,
         "title": {
           "x": 24,
-          "y": 173.34375,
+          "y": 408.390625,
           "width": 342,
-          "height": 79.78125,
-          "top": 173.34375,
+          "height": 100.171875,
+          "top": 408.390625,
           "right": 366,
-          "bottom": 253.125,
+          "bottom": 508.5625,
           "left": 24
         },
         "titleRuns": [
           {
             "x": 24,
-            "y": 172.34375,
-            "width": 333.765625,
-            "height": 41,
-            "top": 172.34375,
-            "right": 357.765625,
-            "bottom": 213.34375,
+            "y": 407.390625,
+            "width": 232.109375,
+            "height": 50,
+            "top": 407.390625,
+            "right": 256.109375,
+            "bottom": 457.390625,
             "left": 24
           },
           {
-            "x": 357.765625,
-            "y": 172.34375,
+            "x": 256.109375,
+            "y": 407.390625,
             "width": 0,
-            "height": 41,
-            "top": 172.34375,
-            "right": 357.765625,
-            "bottom": 213.34375,
-            "left": 357.765625
+            "height": 50,
+            "top": 407.390625,
+            "right": 256.109375,
+            "bottom": 457.390625,
+            "left": 256.109375
           },
           {
             "x": 24,
-            "y": 212.234375,
-            "width": 192.3125,
-            "height": 41,
-            "top": 212.234375,
-            "right": 216.3125,
-            "bottom": 253.234375,
+            "y": 455.546875,
+            "width": 171.609375,
+            "height": 54,
+            "top": 455.546875,
+            "right": 195.609375,
+            "bottom": 509.546875,
             "left": 24
           },
           {
             "x": 24,
-            "y": 212.234375,
-            "width": 192.3125,
-            "height": 41,
-            "top": 212.234375,
-            "right": 216.3125,
-            "bottom": 253.234375,
+            "y": 455.546875,
+            "width": 171.609375,
+            "height": 54,
+            "top": 455.546875,
+            "right": 195.609375,
+            "bottom": 509.546875,
             "left": 24
-          },
-          {
-            "x": 216.3125,
-            "y": 212.234375,
-            "width": 83.453125,
-            "height": 41,
-            "top": 212.234375,
-            "right": 299.765625,
-            "bottom": 253.234375,
-            "left": 216.3125
           }
         ],
         "ctas": [
           {
             "x": 24,
-            "y": 388.375,
-            "width": 342,
-            "height": 55.5,
-            "top": 388.375,
-            "right": 366,
-            "bottom": 443.875,
+            "y": 616.15625,
+            "width": 147.28125,
+            "height": 58.796875,
+            "top": 616.15625,
+            "right": 171.28125,
+            "bottom": 674.953125,
             "left": 24
           },
           {
-            "x": 24,
-            "y": 455.875,
-            "width": 342,
-            "height": 55.5,
-            "top": 455.875,
-            "right": 366,
-            "bottom": 511.375,
-            "left": 24
+            "x": 199.28125,
+            "y": 623.546875,
+            "width": 87.015625,
+            "height": 44,
+            "top": 623.546875,
+            "right": 286.296875,
+            "bottom": 667.546875,
+            "left": 199.28125
           }
         ],
         "header": {
           "x": 0,
           "y": 0,
           "width": 390,
-          "height": 79,
+          "height": 76,
           "top": 0,
           "right": 390,
-          "bottom": 79,
+          "bottom": 76,
           "left": 0
         },
-        "phone": {
-          "x": 300,
-          "y": 754,
-          "width": 60,
-          "height": 60,
-          "top": 754,
-          "right": 360,
-          "bottom": 814,
-          "left": 300
-        },
-        "image": "https://franchise.hairlove.kr/assets/salon-hero-1672.webp",
+        "image": "https://franchise.hairlove.kr/assets/salon-portrait-1672.webp",
         "animationDuration": "24s",
         "playbackControls": 0
       },
       "images": [
         {
-          "src": "assets/logo_green.png",
+          "src": "assets/logo_white.png",
+          "loaded": true
+        },
+        {
+          "src": "assets/salon-portrait-1672.webp",
+          "loaded": true
+        },
+        {
+          "src": "assets/palsaek-product-1200.webp",
+          "loaded": true
+        },
+        {
+          "src": "assets/essence-product-1200.webp",
           "loaded": true
         },
         {
           "src": "assets/salon-hero-1672.webp",
-          "loaded": true
-        },
-        {
-          "src": "assets/dye_poster.jpg",
-          "loaded": true
-        },
-        {
-          "src": "assets/essence_poster.jpg",
           "loaded": true
         },
         {
@@ -303,9 +272,9 @@
       ],
       "checks": [
         "layout",
-        "loading",
+        "responsive image loading",
         "no playback controls",
-        "four animated layers with stationary title",
+        "portrait and daylight motion with stationary title",
         "legacy pause setting ignored",
         "offscreen pause/resume",
         "product reflection hover/focus pause",
@@ -314,9 +283,10 @@
         "dynamic reduced motion",
         "navigation",
         "FAQ",
-        "image click/tap enlargement without visible zoom label",
+        "image click/tap opens original poster without visible zoom label",
         "keyboard enlargement, focus trap and return",
         "Escape, close button and backdrop dismissal",
+        "product and story details",
         "required/consent validation",
         "mocked form success/error/offline"
       ],
@@ -332,127 +302,111 @@
         "bodyWidth": 768,
         "title": {
           "x": 24,
-          "y": 173.34375,
+          "y": 453.390625,
           "width": 720,
-          "height": 117.59375,
-          "top": 173.34375,
+          "height": 139.765625,
+          "top": 453.390625,
           "right": 744,
-          "bottom": 290.9375,
+          "bottom": 593.15625,
           "left": 24
         },
         "titleRuns": [
           {
             "x": 24,
-            "y": 171.34375,
-            "width": 497.921875,
-            "height": 61,
-            "top": 171.34375,
-            "right": 521.921875,
-            "bottom": 232.34375,
+            "y": 451.390625,
+            "width": 323.953125,
+            "height": 70,
+            "top": 451.390625,
+            "right": 347.953125,
+            "bottom": 521.390625,
             "left": 24
           },
           {
-            "x": 521.921875,
-            "y": 171.34375,
+            "x": 347.953125,
+            "y": 451.390625,
             "width": 0,
-            "height": 61,
-            "top": 171.34375,
-            "right": 521.921875,
-            "bottom": 232.34375,
-            "left": 521.921875
+            "height": 70,
+            "top": 451.390625,
+            "right": 347.953125,
+            "bottom": 521.390625,
+            "left": 347.953125
           },
           {
             "x": 24,
-            "y": 230.140625,
-            "width": 286.8125,
-            "height": 61,
-            "top": 230.140625,
-            "right": 310.8125,
-            "bottom": 291.140625,
+            "y": 518.578125,
+            "width": 239.46875,
+            "height": 75,
+            "top": 518.578125,
+            "right": 263.46875,
+            "bottom": 593.578125,
             "left": 24
           },
           {
             "x": 24,
-            "y": 230.140625,
-            "width": 286.8125,
-            "height": 61,
-            "top": 230.140625,
-            "right": 310.8125,
-            "bottom": 291.140625,
+            "y": 518.578125,
+            "width": 239.46875,
+            "height": 75,
+            "top": 518.578125,
+            "right": 263.46875,
+            "bottom": 593.578125,
             "left": 24
-          },
-          {
-            "x": 310.8125,
-            "y": 230.140625,
-            "width": 124.484375,
-            "height": 61,
-            "top": 230.140625,
-            "right": 435.296875,
-            "bottom": 291.140625,
-            "left": 310.8125
           }
         ],
         "ctas": [
           {
             "x": 24,
-            "y": 398.4375,
-            "width": 234,
-            "height": 55.5,
-            "top": 398.4375,
-            "right": 258,
-            "bottom": 453.9375,
+            "y": 700.75,
+            "width": 147.28125,
+            "height": 58.796875,
+            "top": 700.75,
+            "right": 171.28125,
+            "bottom": 759.546875,
             "left": 24
           },
           {
-            "x": 270,
-            "y": 398.4375,
-            "width": 234,
-            "height": 55.5,
-            "top": 398.4375,
-            "right": 504,
-            "bottom": 453.9375,
-            "left": 270
+            "x": 199.28125,
+            "y": 708.140625,
+            "width": 87.015625,
+            "height": 44,
+            "top": 708.140625,
+            "right": 286.296875,
+            "bottom": 752.140625,
+            "left": 199.28125
           }
         ],
         "header": {
           "x": 0,
           "y": 0,
           "width": 768,
-          "height": 79,
+          "height": 76,
           "top": 0,
           "right": 768,
-          "bottom": 79,
+          "bottom": 76,
           "left": 0
         },
-        "phone": {
-          "x": 678,
-          "y": 934,
-          "width": 60,
-          "height": 60,
-          "top": 934,
-          "right": 738,
-          "bottom": 994,
-          "left": 678
-        },
-        "image": "https://franchise.hairlove.kr/assets/salon-hero-1672.webp",
+        "image": "https://franchise.hairlove.kr/assets/salon-portrait-1672.webp",
         "animationDuration": "24s",
         "playbackControls": 0
       },
       "images": [
         {
-          "src": "assets/logo_green.png",
+          "src": "assets/logo_white.png",
+          "loaded": true
+        },
+        {
+          "src": "assets/salon-portrait-1672.webp",
+          "loaded": true
+        },
+        {
+          "src": "assets/palsaek-product-1200.webp",
+          "loaded": true
+        },
+        {
+          "src": "assets/essence-product-1200.webp",
           "loaded": true
         },
         {
           "src": "assets/salon-hero-1672.webp",
-          "loaded": true
-        },
-        {
-          "src": "assets/dye_poster.jpg",
-          "loaded": true
-        },
-        {
-          "src": "assets/essence_poster.jpg",
           "loaded": true
         },
         {
@@ -462,9 +416,9 @@
       ],
       "checks": [
         "layout",
-        "loading",
+        "responsive image loading",
         "no playback controls",
-        "four animated layers with stationary title",
+        "portrait and daylight motion with stationary title",
         "legacy pause setting ignored",
         "offscreen pause/resume",
         "product reflection hover/focus pause",
@@ -473,9 +427,10 @@
         "dynamic reduced motion",
         "navigation",
         "FAQ",
-        "image click/tap enlargement without visible zoom label",
+        "image click/tap opens original poster without visible zoom label",
         "keyboard enlargement, focus trap and return",
         "Escape, close button and backdrop dismissal",
+        "product and story details",
         "required/consent validation",
         "mocked form success/error/offline"
       ],
@@ -490,128 +445,112 @@
         "viewport": 1100,
         "bodyWidth": 1100,
         "title": {
-          "x": 24,
-          "y": 324.34375,
-          "width": 800,
-          "height": 117.03125,
-          "top": 324.34375,
-          "right": 824,
-          "bottom": 441.375,
-          "left": 24
+          "x": 40,
+          "y": 309.921875,
+          "width": 632.390625,
+          "height": 142.53125,
+          "top": 309.921875,
+          "right": 672.390625,
+          "bottom": 452.453125,
+          "left": 40
         },
         "titleRuns": [
           {
-            "x": 24,
-            "y": 323.34375,
-            "width": 492.265625,
-            "height": 60,
-            "top": 323.34375,
-            "right": 516.265625,
-            "bottom": 383.34375,
-            "left": 24
+            "x": 40,
+            "y": 306.921875,
+            "width": 356.328125,
+            "height": 76,
+            "top": 306.921875,
+            "right": 396.328125,
+            "bottom": 382.921875,
+            "left": 40
           },
           {
-            "x": 516.265625,
-            "y": 323.34375,
+            "x": 396.328125,
+            "y": 306.921875,
             "width": 0,
-            "height": 60,
-            "top": 323.34375,
-            "right": 516.265625,
-            "bottom": 383.34375,
-            "left": 516.265625
+            "height": 76,
+            "top": 306.921875,
+            "right": 396.328125,
+            "bottom": 382.921875,
+            "left": 396.328125
           },
           {
-            "x": 24,
-            "y": 381.859375,
-            "width": 283.59375,
-            "height": 60,
-            "top": 381.859375,
-            "right": 307.59375,
-            "bottom": 441.859375,
-            "left": 24
+            "x": 40,
+            "y": 378.1875,
+            "width": 242.65625,
+            "height": 76,
+            "top": 378.1875,
+            "right": 282.65625,
+            "bottom": 454.1875,
+            "left": 40
           },
           {
-            "x": 24,
-            "y": 381.859375,
-            "width": 283.59375,
-            "height": 60,
-            "top": 381.859375,
-            "right": 307.59375,
-            "bottom": 441.859375,
-            "left": 24
-          },
-          {
-            "x": 307.59375,
-            "y": 381.859375,
-            "width": 123.078125,
-            "height": 60,
-            "top": 381.859375,
-            "right": 430.671875,
-            "bottom": 441.859375,
-            "left": 307.59375
+            "x": 40,
+            "y": 378.1875,
+            "width": 242.65625,
+            "height": 76,
+            "top": 378.1875,
+            "right": 282.65625,
+            "bottom": 454.1875,
+            "left": 40
           }
         ],
         "ctas": [
           {
-            "x": 24,
-            "y": 564.25,
-            "width": 200.734375,
-            "height": 61.1875,
-            "top": 564.25,
-            "right": 224.734375,
-            "bottom": 625.4375,
-            "left": 24
+            "x": 40,
+            "y": 594.453125,
+            "width": 167.28125,
+            "height": 62.796875,
+            "top": 594.453125,
+            "right": 207.28125,
+            "bottom": 657.25,
+            "left": 40
           },
           {
-            "x": 240.734375,
-            "y": 564.25,
-            "width": 200.734375,
-            "height": 61.1875,
-            "top": 564.25,
-            "right": 441.46875,
-            "bottom": 625.4375,
-            "left": 240.734375
+            "x": 243.28125,
+            "y": 600.953125,
+            "width": 92.8125,
+            "height": 49.796875,
+            "top": 600.953125,
+            "right": 336.09375,
+            "bottom": 650.75,
+            "left": 243.28125
           }
         ],
         "header": {
           "x": 0,
           "y": 0,
           "width": 1100,
-          "height": 79,
+          "height": 88,
           "top": 0,
           "right": 1100,
-          "bottom": 79,
+          "bottom": 88,
           "left": 0
         },
-        "phone": {
-          "x": 1010,
-          "y": 810,
-          "width": 60,
-          "height": 60,
-          "top": 810,
-          "right": 1070,
-          "bottom": 870,
-          "left": 1010
-        },
-        "image": "https://franchise.hairlove.kr/assets/salon-hero-1672.webp",
+        "image": "https://franchise.hairlove.kr/assets/salon-portrait-1672.webp",
         "animationDuration": "24s",
         "playbackControls": 0
       },
       "images": [
         {
-          "src": "assets/logo_green.png",
+          "src": "assets/logo_white.png",
+          "loaded": true
+        },
+        {
+          "src": "assets/salon-portrait-1672.webp",
+          "loaded": true
+        },
+        {
+          "src": "assets/palsaek-product-1200.webp",
+          "loaded": true
+        },
+        {
+          "src": "assets/essence-product-1200.webp",
           "loaded": true
         },
         {
           "src": "assets/salon-hero-1672.webp",
-          "loaded": true
-        },
-        {
-          "src": "assets/dye_poster.jpg",
-          "loaded": true
-        },
-        {
-          "src": "assets/essence_poster.jpg",
           "loaded": true
         },
         {
@@ -621,9 +560,9 @@
       ],
       "checks": [
         "layout",
-        "loading",
+        "responsive image loading",
         "no playback controls",
-        "four animated layers with stationary title",
+        "portrait and daylight motion with stationary title",
         "legacy pause setting ignored",
         "offscreen pause/resume",
         "product reflection hover/focus pause",
@@ -632,9 +571,10 @@
         "dynamic reduced motion",
         "navigation",
         "FAQ",
-        "image click/tap enlargement without visible zoom label",
+        "image click/tap opens original poster without visible zoom label",
         "keyboard enlargement, focus trap and return",
         "Escape, close button and backdrop dismissal",
+        "product and story details",
         "required/consent validation",
         "mocked form success/error/offline"
       ],
@@ -649,128 +589,112 @@
         "viewport": 1440,
         "bodyWidth": 1440,
         "title": {
-          "x": 144,
-          "y": 306.265625,
-          "width": 800,
-          "height": 153.1875,
-          "top": 306.265625,
-          "right": 944,
-          "bottom": 459.453125,
-          "left": 144
+          "x": 80,
+          "y": 287.875,
+          "width": 793.59375,
+          "height": 186.625,
+          "top": 287.875,
+          "right": 873.59375,
+          "bottom": 474.5,
+          "left": 80
         },
         "titleRuns": [
           {
-            "x": 144,
-            "y": 304.265625,
-            "width": 649.390625,
-            "height": 79,
-            "top": 304.265625,
-            "right": 793.390625,
-            "bottom": 383.265625,
-            "left": 144
+            "x": 80,
+            "y": 283.875,
+            "width": 466.421875,
+            "height": 100,
+            "top": 283.875,
+            "right": 546.421875,
+            "bottom": 383.875,
+            "left": 80
           },
           {
-            "x": 793.390625,
-            "y": 304.265625,
+            "x": 546.421875,
+            "y": 283.875,
             "width": 0,
-            "height": 79,
-            "top": 304.265625,
-            "right": 793.390625,
-            "bottom": 383.265625,
-            "left": 793.390625
+            "height": 100,
+            "top": 283.875,
+            "right": 546.421875,
+            "bottom": 383.875,
+            "left": 546.421875
           },
           {
-            "x": 144,
-            "y": 380.859375,
-            "width": 374.03125,
-            "height": 79,
-            "top": 380.859375,
-            "right": 518.03125,
-            "bottom": 459.859375,
-            "left": 144
+            "x": 80,
+            "y": 377.1875,
+            "width": 317.625,
+            "height": 100,
+            "top": 377.1875,
+            "right": 397.625,
+            "bottom": 477.1875,
+            "left": 80
           },
           {
-            "x": 144,
-            "y": 380.859375,
-            "width": 374.03125,
-            "height": 79,
-            "top": 380.859375,
-            "right": 518.03125,
-            "bottom": 459.859375,
-            "left": 144
-          },
-          {
-            "x": 518.03125,
-            "y": 380.859375,
-            "width": 162.359375,
-            "height": 79,
-            "top": 380.859375,
-            "right": 680.390625,
-            "bottom": 459.859375,
-            "left": 518.03125
+            "x": 80,
+            "y": 377.1875,
+            "width": 317.625,
+            "height": 100,
+            "top": 377.1875,
+            "right": 397.625,
+            "bottom": 477.1875,
+            "left": 80
           }
         ],
         "ctas": [
           {
-            "x": 144,
-            "y": 582.328125,
-            "width": 200.734375,
-            "height": 61.1875,
-            "top": 582.328125,
-            "right": 344.734375,
-            "bottom": 643.515625,
-            "left": 144
+            "x": 80,
+            "y": 616.5,
+            "width": 167.28125,
+            "height": 62.796875,
+            "top": 616.5,
+            "right": 247.28125,
+            "bottom": 679.296875,
+            "left": 80
           },
           {
-            "x": 360.734375,
-            "y": 582.328125,
-            "width": 200.734375,
-            "height": 61.1875,
-            "top": 582.328125,
-            "right": 561.46875,
-            "bottom": 643.515625,
-            "left": 360.734375
+            "x": 283.28125,
+            "y": 623,
+            "width": 92.8125,
+            "height": 49.796875,
+            "top": 623,
+            "right": 376.09375,
+            "bottom": 672.796875,
+            "left": 283.28125
           }
         ],
         "header": {
           "x": 0,
           "y": 0,
           "width": 1440,
-          "height": 79,
+          "height": 88,
           "top": 0,
           "right": 1440,
-          "bottom": 79,
+          "bottom": 88,
           "left": 0
         },
-        "phone": {
-          "x": 1350,
-          "y": 810,
-          "width": 60,
-          "height": 60,
-          "top": 810,
-          "right": 1410,
-          "bottom": 870,
-          "left": 1350
-        },
-        "image": "https://franchise.hairlove.kr/assets/salon-hero-1672.webp",
+        "image": "https://franchise.hairlove.kr/assets/salon-portrait-1672.webp",
         "animationDuration": "24s",
         "playbackControls": 0
       },
       "images": [
         {
-          "src": "assets/logo_green.png",
+          "src": "assets/logo_white.png",
+          "loaded": true
+        },
+        {
+          "src": "assets/salon-portrait-1672.webp",
+          "loaded": true
+        },
+        {
+          "src": "assets/palsaek-product-1200.webp",
+          "loaded": true
+        },
+        {
+          "src": "assets/essence-product-1200.webp",
           "loaded": true
         },
         {
           "src": "assets/salon-hero-1672.webp",
-          "loaded": true
-        },
-        {
-          "src": "assets/dye_poster.jpg",
-          "loaded": true
-        },
-        {
-          "src": "assets/essence_poster.jpg",
           "loaded": true
         },
         {
@@ -780,9 +704,9 @@
       ],
       "checks": [
         "layout",
-        "loading",
+        "responsive image loading",
         "no playback controls",
-        "four animated layers with stationary title",
+        "portrait and daylight motion with stationary title",
         "legacy pause setting ignored",
         "offscreen pause/resume",
         "product reflection hover/focus pause",
@@ -791,14 +715,23 @@
         "dynamic reduced motion",
         "navigation",
         "FAQ",
-        "image click/tap enlargement without visible zoom label",
+        "image click/tap opens original poster without visible zoom label",
         "keyboard enlargement, focus trap and return",
         "Escape, close button and backdrop dismissal",
+        "product and story details",
         "required/consent validation",
         "mocked form success/error/offline"
       ],
       "mockedFormRequests": 3
     }
   ],
-  "noJavaScript": "Visible content; image motion stays paused"
+  "noJavaScript": "Visible content; image motion stays paused",
+  "baselineCommit": "2cbcf8d69e43fb66b41042990b1b8d6ff72ab6a7",
+  "siteVersion": "4.0",
+  "verifiedFileSha256": {
+    "index.html": "16e30f413f923038489d6bd5981945a247a8a0397297b7f74e52f4cb6a977e6a",
+    "styles.css": "899f323ffedaa156dc97a7bdc9fe7601e099fc69eb623dda26af6ccfc6f1b2df",
+    "app.js": "6ac41fdf10a541c9eab1150e93a8067c3e46ed29c0d32791929288c0fce29999"
+  },
+  "deviceTesting": "Chromium viewport and touch emulation; not physical devices"
 }
